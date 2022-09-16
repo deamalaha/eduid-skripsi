@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/EduID_contract.sol": "RSSC"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/EduID_contract.sol": {
+			"keccak256": "0x10b3b8dc9edc7626ec7df752345638c3899d605abbf4ff9258e82df4f827a0a5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://56855f771c53c6ab6e3fc1f11a0823e5af3a23fdb450c095130aae114a2d8d0b",
+				"dweb:/ipfs/QmVv2oP8S8E83gTXMiFbWPTmUjrF7rxSA54wzB6FQCzBNg"
+			]
+		}
+	},
+	"version": 1
+}
