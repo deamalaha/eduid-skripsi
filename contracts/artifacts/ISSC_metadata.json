@@ -4,7 +4,179 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "PubKeyInstitutionInfoMap",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "namaInstitusi",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "NPSN",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "akreditasi",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "jenisSekolah",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "alamatInstitusi",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nomorTelepon",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "agreeToJoin",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "blockAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_namaInstitusi",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_NPSN",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_akreditasi",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_jenisSekolah",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_alamatInstitusi",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_nomorTelepon",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_agreeToJoin",
+						"type": "bool"
+					}
+				],
+				"name": "initInstitutionMap",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "institutionInfoMap",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "namaInstitusi",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "NPSN",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "akreditasi",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "jenisSekolah",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "alamatInstitusi",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nomorTelepon",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "agreeToJoin",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_NPSN",
+						"type": "uint256"
+					}
+				],
+				"name": "isExistInstitution",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -33,11 +205,11 @@
 	},
 	"sources": {
 		"contracts/EduID_contract.sol": {
-			"keccak256": "0x10b3b8dc9edc7626ec7df752345638c3899d605abbf4ff9258e82df4f827a0a5",
+			"keccak256": "0xfd49fedcba7294c1dc3eaf691a289791c258a129e6ec433ff0c71316dd5ad147",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://56855f771c53c6ab6e3fc1f11a0823e5af3a23fdb450c095130aae114a2d8d0b",
-				"dweb:/ipfs/QmVv2oP8S8E83gTXMiFbWPTmUjrF7rxSA54wzB6FQCzBNg"
+				"bzz-raw://509758827b7abb85381167bda733770c45554c3e73dbd1b43d348dfcf85146f3",
+				"dweb:/ipfs/QmYQYaVAGEGjyBFQNYgqK5e3dc9pyaqSNRrUWD38iaQuXH"
 			]
 		}
 	},

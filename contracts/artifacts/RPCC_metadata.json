@@ -33,11 +33,11 @@
 	},
 	"sources": {
 		"contracts/EduID_contract.sol": {
-			"keccak256": "0x10b3b8dc9edc7626ec7df752345638c3899d605abbf4ff9258e82df4f827a0a5",
+			"keccak256": "0xfd49fedcba7294c1dc3eaf691a289791c258a129e6ec433ff0c71316dd5ad147",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://56855f771c53c6ab6e3fc1f11a0823e5af3a23fdb450c095130aae114a2d8d0b",
-				"dweb:/ipfs/QmVv2oP8S8E83gTXMiFbWPTmUjrF7rxSA54wzB6FQCzBNg"
+				"bzz-raw://509758827b7abb85381167bda733770c45554c3e73dbd1b43d348dfcf85146f3",
+				"dweb:/ipfs/QmYQYaVAGEGjyBFQNYgqK5e3dc9pyaqSNRrUWD38iaQuXH"
 			]
 		}
 	},
