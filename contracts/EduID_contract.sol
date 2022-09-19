@@ -47,7 +47,6 @@ contract ISSC {
             PubKeyInstitutionInfoMap[blockAddress].alamatInstitusi = _alamatInstitusi;
             PubKeyInstitutionInfoMap[blockAddress].nomorTelepon = _nomorTelepon;
 
-
             //store address to array
             institutionBlockAddressArray.push(blockAddress);
 
