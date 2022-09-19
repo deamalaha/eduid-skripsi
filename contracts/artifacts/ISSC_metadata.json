@@ -44,11 +44,6 @@
 						"internalType": "uint256",
 						"name": "nomorTelepon",
 						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "agreeToJoin",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -90,11 +85,6 @@
 						"internalType": "uint256",
 						"name": "_nomorTelepon",
 						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "_agreeToJoin",
-						"type": "bool"
 					}
 				],
 				"name": "initInstitutionMap",
@@ -106,6 +96,25 @@
 					}
 				],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "institutionBlockAddressArray",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -147,11 +156,6 @@
 						"internalType": "uint256",
 						"name": "nomorTelepon",
 						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "agreeToJoin",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -160,9 +164,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_NPSN",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "_blockAddress",
+						"type": "address"
 					}
 				],
 				"name": "isExistInstitution",
@@ -205,11 +209,11 @@
 	},
 	"sources": {
 		"contracts/EduID_contract.sol": {
-			"keccak256": "0xfd49fedcba7294c1dc3eaf691a289791c258a129e6ec433ff0c71316dd5ad147",
+			"keccak256": "0xf2f5cb9e283302f5fc7e319c4ac69823a478a15ef67d64e143489a62ceb2447d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://509758827b7abb85381167bda733770c45554c3e73dbd1b43d348dfcf85146f3",
-				"dweb:/ipfs/QmYQYaVAGEGjyBFQNYgqK5e3dc9pyaqSNRrUWD38iaQuXH"
+				"bzz-raw://70bedcca68080baa45b18b39d26195c3394270c8f4dd3a0d0a9ebeab9427f557",
+				"dweb:/ipfs/QmSp9FbQENxMRjANTBpfWXHLLiTd6KqgdJCSc9PCtihqjL"
 			]
 		}
 	},
