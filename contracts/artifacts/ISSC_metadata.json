@@ -209,11 +209,11 @@
 	},
 	"sources": {
 		"contracts/EduID_contract.sol": {
-			"keccak256": "0x833b84b1004bd5cc0f594daabf6be9746aec36ced9731c6a7253205dfabb5b53",
+			"keccak256": "0x42a0efbdc7eb780e51cfa88191649a310631b5eaf87d5bec93935abba847362e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://49e2fcd542b8bdb9fc24d0f24581fa444e55297951c87d679d0bacdab360dc8f",
-				"dweb:/ipfs/QmTBkivZ8Vyfn1PEC7iqjdCzojtWxt29CggyNx7Jv8e84H"
+				"bzz-raw://41d27c989ee6779375094030dce991934f99dc324bf55db9226e274437ba7dd9",
+				"dweb:/ipfs/QmbpcZEddcxnrrhLo3pisK3gX8wD5NkjAwZCAMYpdDvHv9"
 			]
 		}
 	},

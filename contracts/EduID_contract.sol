@@ -74,7 +74,59 @@ contract ISSC {
 
 
 contract RPCC {
-    
+    struct PermissionInfo{
+        string rdId;
+        string rdHash;
+        address[] rdPermissions;
+        uint permissionType;
+    }
+
+    //permission Type
+        // 0 = tidak dapat diakses siapapun selain pemilik
+        // 1 = semua nodes memiliki akses
+        // -1 = hanya member tertentu yang memiliki akses]
+
+    mapping (string => PermissionInfo) public RdPermissionMap;
+    string[] public RdPermissionHashArray;
+
+    function updateRdPermissions(string memory _rdHash, address blockAddress, uint operation) public returns (bool) {
+        if (operation == 1) {
+            if (RdPermissionMap[_rdHash].permissionType == 1) {
+                return true;
+            }
+            if (RdPermissionMap[_rdHash].permissionType == 0) {
+                return false;
+            }
+            RdPermissionMap[_rdHash].rdPermissions.push(blockAddress);
+            return true;
+        }
+
+        if(operation == 0) {
+            for (uint i =0; i<=RdPermissionMap[_rdHash].rdPermissions.length; i++) {
+                if (RdPermissionMap[_rdHash].rdPermissions[i] == blockAddress) {
+                    delete RdPermissionMap[_rdHash].rdPermissions[i];
+                    RdPermissionMap[_rdHash].rdPermissions.pop;
+                    return true;
+                }
+                return false;
+            }
+        }
+    }
+
+    function isExistPermission(string memory _rdHash, address blockAddress) public view returns (bool) {
+        if (RdPermissionMap[_rdHash].permissionType == 1) {
+            return true;
+        }
+        if (RdPermissionMap[_rdHash].permissionType == 0) {
+            return false;
+        }
+        for (uint i =0; i<=RdPermissionMap[_rdHash].rdPermissions.length; i++) {
+            if (RdPermissionMap[_rdHash].rdPermissions[i] == blockAddress) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 contract RSSC {
