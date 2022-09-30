@@ -791,6 +791,10 @@ select {
           print-color-adjust: exact;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -872,6 +876,10 @@ select {
   margin-bottom: 0.5rem;
 }
 
+.ml-64 {
+  margin-left: 16rem;
+}
+
 .block {
   display: block;
 }
@@ -930,6 +938,10 @@ select {
 
 .flex-auto {
   flex: 1 1 auto;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .shrink-0 {
@@ -1175,6 +1187,14 @@ select {
   padding-top: 4rem;
 }
 
+.pt-12 {
+  padding-top: 3rem;
+}
+
+.pl-9 {
+  padding-left: 2.25rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1207,12 +1227,21 @@ select {
   line-height: 28px;
 }
 
+.text-display_sm {
+  font-size: 30px;
+  line-height: 38px;
+}
+
 .font-semibold {
   font-weight: 600;
 }
 
 .font-medium {
   font-weight: 500;
+}
+
+.font-regular {
+  font-weight: 400;
 }
 
 .leading-normal {
