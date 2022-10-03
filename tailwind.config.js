@@ -40,6 +40,7 @@ module.exports = {
       'gray-200': '#EAECF0',
       'gray-300': '#D0D5DD',
       'gray-500': '#667085',
+      'gray-700': '#344054',
     }
   },
   plugins: [

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Siswa Dashboard</title>
+</head>
+<body class="font-inter">
+    <!-- <div class="flex"> -->
+        <aside class="h-screen fixed left-0 top-0">
+            <div class="w-64 h-full shadow-md bg-primary-900 absolute text-white" id="sidenavSecExample">
+                <div class="pt-8 pb-6 px-6">
+                      <div class="flex items-center">
+                        <div class="shrink-0">
+                          <img src="/assets/Logomark.png" class="rounded-full w-10" alt="Logomark">
+                        </div>
+                        <div class="grow ml-3">
+                          <p class="text-text_lg font-semibold text-white">Untitled UI
+                          </p>
+                        </div>
+                      </div>
+                  </div>
+                
+                <ul class="relative px-4">
+                    <div class="flex justify-center">
+                        <div class="mb-3 xl:w-52">
+                          <div class="input-group relative flex flex-wrap items-stretch w-full mb-4 rounded-lg">
+                            <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-white bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-text-base focus:bg-white focus:border-primary-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                          </div>
+                        </div>
+                    </div>
+                    <div>
+                        <ul class="relative">
+                            <li class="relative">
+                                <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                                    <img src="/assets/home.png" class="mr-3" alt="">
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="relative">
+                                <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                                    <img src="/assets/3-layers.png" class="mr-3" alt="">
+                                    <span>Kurikulum</span>
+                                </a>
+                            </li>
+                            <li class="relative">
+                                <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                                    <img src="/assets/check-square.png" class="mr-3" alt="">
+                                    <span>Nilai Siswa</span>
+                                </a>
+                            </li>
+                            <li class="relative">
+                                <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                                <img src="/assets/cloud.png" class="mr-3" alt="">
+                                <span>Data Sharing</span>
+                                </a>
+                            </li>
+                            <li class="relative">
+                                <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                                <img src="/assets/flag.png" class="mr-3" alt="">
+                                <span>Report</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
+                <div class="text-center bottom-0 absolute w-full">
+                    <div class="px-4">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                        <img src="/assets/settings.png" class="mr-3" alt="">
+                        <span>Settings</span>
+                        </a>
+                    </div>
+                    <div>
+                        <div class="flex items-center px-6 before:flex-1 before:border-t before:border-gray-500 before:mt-0.5 after:flex-1 after:border-t after:border-gray-500 after:mt-0.5"></div>
+                    </div>
+                    <div class="py-8 px-6">
+                        <a href="#!">
+                          <div class="flex items-center">
+                            <div class="shrink-0">
+                              <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full w-10" alt="Avatar">
+                            </div>
+                            <div class="grow ml-3">
+                              <p class="text-sm font-semibold text-blue-600">Jason McCoel</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 ml-64 overflow-y-scroll">
+            <div class="pt-12 pl-9 flex">
+                <div>
+                    <h1 class="text-display_sm font-medium">Siswa</h1>
+                    <p class="text-text_md font-regular text-gray-500">Atur kelas dan siswa setiap tingkatan</p>
+                </div>
+                <!-- <div class="float-right">
+                    <div class="float-right">
+                        <div class="mb-3 xl:w-96">
+                          <select class="form-select appearance-none
+                            h-11 
+                            w-96
+                            block
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-text-base
+                            bg-white bg-clip-padding bg-no-repeat
+                            border border-solid border-gray-300
+                            focus:ring-primary-600
+                            transition
+                            ease-in-out
+                            m-0
+                            rounded-lg
+                            focus:text-white focus:bg-white focus:outline-none" aria-label="Default select example">
+                              <option selected>Pilih jenis studi</option>
+                              <option value="1">Reguler</option>
+                              <option value="2">Akselerasi</option>
+                              <option value="3">Lainnya</option>
+                          </select>
+                        </div>
+                    </div> 
+                </div> -->
+            </div>
+            
+            <div class="pl-8 pr-14 pt-5">
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <caption class="p-5 font-semibold text-text-base bg-white">
+                            <div class="flex items-center">
+                                <h1 class="text-left flex-1">Tingkat 10</h1>
+                                <div>
+                                    <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
+                                    border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
+                                    <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
+                                        <!-- <img src="/assets/plus.png" alt="" class="w-5 h-5"> -->
+                                        Tambah Kelas</button>
+                                </div>
+                            </div>
+                        </caption>
+                        <thead class="text-text_sm font-medium text-gray-500 bg-gray-50">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    Nama Kelas
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Jurusan
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Standar Kurikulum
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Date Uploaded
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Last Updated
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    <span class="sr-only"></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="pl-8 pr-14 pt-5">
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <caption class="p-5 font-semibold text-text-base bg-white">
+                            <div class="flex items-center">
+                                <h1 class="text-left flex-1">Tingkat 11</h1>
+                                <div>
+                                    <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
+                                    border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
+                                    <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
+                                        <!-- <img src="/assets/plus.png" alt="" class="w-5 h-5"> -->
+                                        Tambah Kelas</button>
+                                </div>
+                            </div>
+                        </caption>
+                        <thead class="text-text_sm font-medium text-gray-500 bg-gray-50">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    Nama Kelas
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Jurusan
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Standar Kurikulum
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Date Uploaded
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Last Updated
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    <span class="sr-only"></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="pl-8 pr-14 pt-5">
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <caption class="p-5 font-semibold text-text-base bg-white">
+                            <div class="flex items-center">
+                                <h1 class="text-left flex-1">Tingkat 12</h1>
+                                <div>
+                                    <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
+                                    border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
+                                    <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
+                                        <!-- <img src="/assets/plus.png" alt="" class="w-5 h-5"> -->
+                                        Tambah Kelas</button>
+                                </div>
+                            </div>
+                        </caption>
+                        <thead class="text-text_sm font-medium text-gray-500 bg-gray-50">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    Nama Kelas
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Jurusan
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Standar Kurikulum
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Date Uploaded
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Last Updated
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    <span class="sr-only"></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                    X MIPA 1
+                                </th>
+                                <td class="py-7 px-8 ">
+                                    MIPA
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    K13
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 ">
+                                    Jan 4, 2022
+                                </td>
+                                <td class="py-7 px-8 text-right">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    <!-- </div> -->
+</body>
+</html>
