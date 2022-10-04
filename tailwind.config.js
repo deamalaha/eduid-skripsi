@@ -41,6 +41,18 @@ module.exports = {
       'gray-300': '#D0D5DD',
       'gray-500': '#667085',
       'gray-700': '#344054',
+      'success-900': '#054F31',
+      'success-800': '#05603A',
+      'success-700': '#027A48',
+      'success-600': '#039855',
+      'success-500': '#12B76A',
+      'success-400': '#32D583',
+      'success-300': '#6CE9A6',
+      'success-200': '#A6F4C5',
+      'success-100': '#D1FADF',
+      'success-50': '#ECFDF3',
+      'success-25': '#F6FEF9',
+      
     }
   },
   plugins: [
