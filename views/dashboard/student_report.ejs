@@ -1,0 +1,262 @@
+<div class="pt-12 pl-9 flex">
+    <div>
+        <h1 class="text-display_sm font-medium">Report</h1>
+        <p class="text-text_md font-regular text-gray-500">Tambah nilai siswa per kelas untuk setiap mata pelajaran atau siswa untuk seluruh mata pelajaran</p>
+    </div>
+    <!-- <div class="float-right">
+        <div class="float-right">
+            <div class="mb-3 xl:w-96">
+                <select class="form-select appearance-none
+                h-11 
+                w-96
+                block
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-text-base
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                focus:ring-primary-600
+                transition
+                ease-in-out
+                m-0
+                rounded-lg
+                focus:text-white focus:bg-white focus:outline-none" aria-label="Default select example">
+                    <option selected>Pilih jenis studi</option>
+                    <option value="1">Reguler</option>
+                    <option value="2">Akselerasi</option>
+                    <option value="3">Lainnya</option>
+                </select>
+            </div>
+        </div> 
+    </div> -->
+</div>
+
+<div class="pt-5 pl-9 flex">
+    <div class="mb-3 xl:w-96">
+        <label for="jenis-pengisian-nilai" class="block text-text_sm font-medium">Jenis Report</label>
+        <select class="form-select appearance-none
+        h-11 
+        w-96
+        block
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-text-base
+        bg-white bg-clip-padding bg-no-repeat
+        border border-solid border-gray-300
+        focus:ring-primary-600
+        transition
+        ease-in-out
+        m-1
+        rounded-lg
+        focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+            <option selected>Pilih jenis report</option>
+            <option value="1">Nilai Siswa</option>
+        </select>
+    </div>
+</div>
+
+<div class="pt-5 px-9 flex">
+    <div class="w-full border border-gray-300 rounded-lg px-9 py-7 flex justify-start">
+        <div class="flex">
+            <div class="mb-3 mr-5">
+                <label for="jenis-pengisian-nilai" class="block text-text_sm font-medium">Kelas</label>
+                <select class="form-select appearance-none
+                h-11 
+                w-96
+                block
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-text-base
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                focus:ring-primary-600
+                transition
+                ease-in-out
+                m-0
+                rounded-lg
+                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                    <option selected>Pilih kelas</option>
+                    <option value="1">X MIPA 1</option>
+                    <option value="2">X MIPA 2</option>
+                </select>
+            </div>
+            <div class="mb-3 mr-5">
+                <label for="jenis-pengisian-nilai" class="block text-text_sm font-medium">Semester</label>
+                <select class="form-select appearance-none
+                h-11 
+                w-96
+                block
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-text-base
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                focus:ring-primary-600
+                transition
+                ease-in-out
+                m-0
+                rounded-lg
+                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                    <option selected>Pilih Semester</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="mb-3 xl:w-96">
+                <label for="jenis-pengisian-nilai" class="block text-text_sm font-medium">Mata Pelajaran</label>
+                <select class="form-select appearance-none
+                h-11 
+                w-96
+                block
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-text-base
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                focus:ring-primary-600
+                transition
+                ease-in-out
+                m-0
+                rounded-lg
+                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                    <option selected>Pilih mata pelajaran</option>
+                    <option value="1">Per kelas</option>
+                    <option value="2">Per siswa</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-5 px-9 flex justify-end">
+    <button type="button" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">
+        <!-- <img src="/assets/plus.png" alt="" class=" flex w-5 h-5"> -->
+        Generate Report</button>
+</div>
+
+<div class="pt-5 px-9 flex">
+    <div class="overflow-x-auto w-full shadow-md sm:rounded-lg">
+        <table class="w-full text-left text-gray-500 bg-primary-600">
+            <caption class="p-5 font-semibold text-text-base bg-white">
+                <div class="flex items-center">
+                    <h1 class="text-left flex-1 text-display_xs">Daftar Nilai Siswa</h1>
+                    <div>
+                        <button type="button" class="bg-white text-text-base text-text_md font-semibold rounded-lg
+                        border inline-flex items-center border-gray-300 px-4 py-3 mr-3"><span class="mr-2"><img src="/assets/download.png" alt=""></span>Download CSV</button>
+                </div>
+            </caption>
+            <thead class="text-text_sm font-medium text-gray-500 bg-gray-50">
+                <tr>
+                    <th scope="col" class="py-3 px-6">
+                        Nama Siswa
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        NISN
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Nilai Siswa
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Date Uploaded
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Last Updated
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                        Dea Ivanka Malaha
+                    </th>
+                    <td class="py-7 px-8 ">
+                        D121181008
+                    </td>
+                    <td class="py-7 px-8 ">
+                        85
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                        Dea Ivanka Malaha
+                    </th>
+                    <td class="py-7 px-8 ">
+                        D121181008
+                    </td>
+                    <td class="py-7 px-8 ">
+                        85
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                        Dea Ivanka Malaha
+                    </th>
+                    <td class="py-7 px-8 ">
+                        D121181008
+                    </td>
+                    <td class="py-7 px-8 ">
+                        85
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                        Dea Ivanka Malaha
+                    </th>
+                    <td class="py-7 px-8 ">
+                        D121181008
+                    </td>
+                    <td class="py-7 px-8 ">
+                        85
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                        Dea Ivanka Malaha
+                    </th>
+                    <td class="py-7 px-8 ">
+                        D121181008
+                    </td>
+                    <td class="py-7 px-8 ">
+                        85
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                    <td class="py-7 px-8 ">
+                        Jan 4, 2022
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
