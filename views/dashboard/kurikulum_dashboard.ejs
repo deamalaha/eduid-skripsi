@@ -74,13 +74,18 @@
                                 <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
                                     <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
                                         <li>
-                                        <a href="/kurikulum/edit/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
+                                        <a href="/kurikulum/edit/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
                                         </li>
                                         <li>
-                                        <a href="/kurikulum/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
+                                        <a href="/kurikulum/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
                                         </li>
                                         <li>
-                                        <a href="/kurikulum/delete/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Hapus Jurusan</a>
+                                        <!-- <a href="/kurikulum/delete/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Hapus Jurusan</a> -->
+
+                                            <form action="/kurikulum?_method=DELETE" method="POST">
+                                                <input type="hidden" name="_id" value="<%= kurikulum._id %>">
+                                                <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Jurusan</button>
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>
@@ -165,7 +170,7 @@
                                         <a href="#" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
                                         </li>
                                         <li>
-                                        <a href="/kurikulum/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
+                                        <a href="/kurikulum/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
                                         </li>
                                         <li>
                                         <a href="/kurikulum/delete/<%= kurikulum.nama %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Hapus Jurusan</a>
@@ -253,10 +258,10 @@
                                         <a href="#" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
                                         </li>
                                         <li>
-                                        <a href="/kurikulum/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
+                                        <a href="/kurikulum/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
                                         </li>
                                         <li>
-                                        <a href="/kurikulum/delete/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin?')">Hapus Jurusan</a>
+                                        <a href="/kurikulum/delete/<%= kurikulum.i_id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin?')">Hapus Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>

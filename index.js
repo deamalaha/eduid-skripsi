@@ -3,6 +3,7 @@ const app = express()
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
+var methodOverride = require('method-override')
 
 var expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator')
@@ -29,6 +30,7 @@ app.use(
   })
 )
 app.use(flash())
+app.use(methodOverride('_method'))
 
 
 app.get('/login', (req, res) => {
@@ -109,24 +111,38 @@ app.get('/kurikulum/tambah_jurusan', (req, res) => {
 })
 
 app.post('/kurikulum', body(), (req, res) => {
-  addJurusan(req.body)
-  res.redirect('/kurikulum')
+  KurikulumJurusan.insertMany(req.body, (error, result) => {
+    req.flash('msg', 'Jurusan berhasil ditambahkan!')
+    res.redirect('/kurikulum')
+  })
 })
 
-app.get('/kurikulum/delete/:id_jurusan', (req, res) => {
-  const dataJurusan = findJurusan(req.params.id_jurusan)
+// app.get('/kurikulum/delete/:_id', async (req, res) => {
 
-  if(!dataJurusan) {
-    res.status(404)
-  } else {
-    deleteJurusan(req.params.id_jurusan)
+//   const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id})
+  
+//   if(!dataJurusan) {
+//     res.status(404)
+//   } else {
+//     KurikulumJurusan.deleteOne({ _id : dataJurusan._id}).then((result) => {
+//       req.flash('msg', 'Jurusan berhasil dihapus')
+//       res.redirect('/kurikulum')
+//     })
+//   }
+// })
+
+// next step: mengubah app.get untuk delete menjadi app.delete
+
+app.delete('/kurikulum', (req, res) => {
+  KurikulumJurusan.deleteOne({ _id : req.body._id}).then((result) => {
     req.flash('msg', 'Jurusan berhasil dihapus')
     res.redirect('/kurikulum')
-  }
+  })
 })
 
-app.get('/kurikulum/edit/:id_jurusan', (req, res) => {
-  const dataJurusan = findJurusan(req.params.id_jurusan)
+app.get('/kurikulum/edit/:_id', async (req, res) => {
+
+  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id})
 
   res.render('modal/modal_edit_jurusan', {
     title: 'Kurikulum Dashboard - Edit Jurusan',
@@ -135,13 +151,14 @@ app.get('/kurikulum/edit/:id_jurusan', (req, res) => {
   })
 })
 
-app.get('/kurikulum/:id_jurusan', (req, res) => {
-  const dataJurusan = findJurusan(req.params.id_jurusan)
-  //delete 
+app.get('/kurikulum/:_id', async (req, res) => {
+
+  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id})
   
   res.render('add/tambah_mata_pelajaran', {
     title: 'Kurikulum Dashboard - Tambah Mata Pelajaran',
     layout: 'layout/main-layout',
+    dataJurusan,
   })
 })
 
