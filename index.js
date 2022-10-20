@@ -117,22 +117,6 @@ app.post('/kurikulum', body(), (req, res) => {
   })
 })
 
-// app.get('/kurikulum/delete/:_id', async (req, res) => {
-
-//   const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id})
-  
-//   if(!dataJurusan) {
-//     res.status(404)
-//   } else {
-//     KurikulumJurusan.deleteOne({ _id : dataJurusan._id}).then((result) => {
-//       req.flash('msg', 'Jurusan berhasil dihapus')
-//       res.redirect('/kurikulum')
-//     })
-//   }
-// })
-
-// next step: mengubah app.get untuk delete menjadi app.delete
-
 app.delete('/kurikulum', (req, res) => {
   KurikulumJurusan.deleteOne({ _id : req.body._id}).then((result) => {
     req.flash('msg', 'Jurusan berhasil dihapus')
