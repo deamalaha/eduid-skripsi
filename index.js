@@ -124,15 +124,43 @@ app.delete('/kurikulum', (req, res) => {
   })
 })
 
-app.get('/kurikulum/edit/:_id', async (req, res) => {
+// app.get('/kurikulum/edit/:_id', async (req, res) => {
 
-  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id})
+//   const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id})
 
-  res.render('modal/modal_edit_jurusan', {
-    title: 'Kurikulum Dashboard - Edit Jurusan',
-    layout: 'layout/signup-layout',
-    dataJurusan
-  })
+//   res.render('modal/modal_edit_jurusan', {
+//     title: 'Kurikulum Dashboard - Edit Jurusan',
+//     layout: 'layout/signup-layout',
+//     dataJurusan
+//   })
+// })
+
+app.put('/kurikulum', (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    res.render('modal/modal_edit_jurusan', {
+      title: 'Kurikulum Dashboard - Edit Jurusan',
+      layout: 'layout/signup-layout',
+      errors: errors.array(),
+      dataJurusan: req.body
+    })
+  } else {
+    KurikulumJurusan.updateOne(
+      { _id : req.body._id }, 
+      {
+        $set: {
+          jenisStudi : req.body.jenisStudi,
+          jurusan: req.body.jurusan,
+          semester: req.body.semester,
+          standarKurikulum: req.body.standarKurikulum,
+          skalaPenilaian: req.body.skalaPenilaian
+        }
+      }
+    ).then((result) => {
+      req.flash('msg', 'Data jurusan berhasil diubah!')
+      res.redirect('/kurikulum')
+    })
+  }
 })
 
 app.get('/kurikulum/:_id', async (req, res) => {
@@ -163,3 +191,5 @@ app.get('/tambah_siswa', (req, res) => {
 app.listen(port, () => {
   console.log(`EduID listening on port localhost:${port}`)
 })
+
+// {"_id":{"$oid":"63516aa7438bc7168431b70f"},"jenisStudi":"Reguler","jurusan":"IPS","semester":"1","standarKurikulum":"Kurikulum Merdeka","skalaPenilaian":"100","__v":{"$numberInt":"0"}}

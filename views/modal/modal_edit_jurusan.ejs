@@ -1,4 +1,5 @@
-<form action="/kurikulum" method="post">
+<form action="/kurikulum?_method=PUT" method="post">
+    <input type="hidden" name="_id" value="<%= dataJurusan._id %>">
     <div class="pt-5 px-9 w-auto">
         <div class="border border-gray-300 rounded-lg px-9 py-7">
             <div class="mb-3 mr-5 pb-4">
@@ -22,7 +23,7 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" id="jenis_studi" name="jenis_studi">
+                focus:text-text-base focus:bg-white focus:outline-none" id="jenisStudi" name="jenisStudi">
                     <option selected>Pilih jenis studi</option>
                     <option value="Reguler">Reguler</option>
                     <option value="Akselerasi">Akselerasi</option>
@@ -94,7 +95,7 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" id="standar_kurikulum" name="standar_kurikulum">
+                focus:text-text-base focus:bg-white focus:outline-none" id="standarKurikulum" name="standarKurikulum">
                     <option selected>Pilih kurikulum</option>
                     <option value="K13">K13</option>
                     <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
@@ -118,16 +119,14 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" id="skala_penilaian" name="skala_penilaian">
+                focus:text-text-base focus:bg-white focus:outline-none" id="skalaPenilaian" name="skalaPenilaian">
                     <option selected>Pilih skala Penilaian</option>
                     <option value="100">100</option>
                     <option value="Huruf">Huruf</option>
                 </select>
             </div>
             <div class="pt-5 px-9 flex justify-end">
-                <button type="submit" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">
-                    <!-- <img src="/assets/plus.png" alt="" class=" flex w-5 h-5"> -->
-                    Simpan Perubahan</button>
+                <button type="submit" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">Simpan Perubahan</button>
             </div>
         </div>
     </div>
