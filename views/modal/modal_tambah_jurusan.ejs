@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-</head>
-<body class="font-inter">
+<form action="/kurikulum" method="post">
     <div class="pt-5 px-9 w-auto">
         <div class="border border-gray-300 rounded-lg px-9 py-7">
             <div class="mb-3 mr-5 pb-4">
@@ -36,10 +22,10 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                focus:text-text-base focus:bg-white focus:outline-none" id="jenis_studi" name="jenis_studi">
                     <option selected>Pilih jenis studi</option>
-                    <option value="1">Reguler</option>
-                    <option value="2">Akselerasi</option>
+                    <option value="Reguler">Reguler</option>
+                    <option value="Akselerasi">Akselerasi</option>
                 </select>
             </div>
             <div class="mb-3 mr-5 pt-5">
@@ -60,10 +46,10 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                focus:text-text-base focus:bg-white focus:outline-none" id="jurusan" name="jurusan">
                     <option selected>Pilih Jurusan</option>
-                    <option value="1">MIPA</option>
-                    <option value="2">IPS</option>
+                    <option value="MIPA">MIPA</option>
+                    <option value="IPS">IPS</option>
                 </select>
             </div>
             <div class="mb-3 mr-5 pt-5">
@@ -84,7 +70,7 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                focus:text-text-base focus:bg-white focus:outline-none" id="semester" name="semester">
                     <option selected>Pilih Semester</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -108,10 +94,10 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                focus:text-text-base focus:bg-white focus:outline-none" id="standar_kurikulum" name="standar_kurikulum">
                     <option selected>Pilih kurikulum</option>
-                    <option value="1">K13</option>
-                    <option value="2">Kurikulum Merdeka</option>
+                    <option value="K13">K13</option>
+                    <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
                 </select>
             </div>
             <div class="mb-3 mr-5 pt-5">
@@ -132,18 +118,17 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
+                focus:text-text-base focus:bg-white focus:outline-none" id="skala_penilaian" name="skala_penilaian">
                     <option selected>Pilih skala Penilaian</option>
-                    <option value="1">100</option>
-                    <option value="2">Huruf</option>
+                    <option value="100">100</option>
+                    <option value="Huruf">Huruf</option>
                 </select>
             </div>
             <div class="pt-5 px-9 flex justify-end">
-                <button type="button" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">
+                <button type="submit" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">
                     <!-- <img src="/assets/plus.png" alt="" class=" flex w-5 h-5"> -->
                     Tambah</button>
             </div>
         </div>
     </div>
-</body>
-</html>
+</form>

@@ -3,34 +3,6 @@
         <h1 class="text-display_sm font-medium">Kurikulum Tingkatan</h1>
         <p class="text-text_md font-regular text-gray-500">Atur kurikulum dan mata pelajaran setiap tingkatan</p>
     </div>
-    <!-- <div class="float-right">
-        <div class="float-right">
-            <div class="mb-3 xl:w-96">
-                <select class="form-select appearance-none
-                h-11 
-                w-96
-                block
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-text-base
-                bg-white bg-clip-padding bg-no-repeat
-                border border-solid border-gray-300
-                focus:ring-primary-600
-                transition
-                ease-in-out
-                m-0
-                rounded-lg
-                focus:text-white focus:bg-white focus:outline-none" aria-label="Default select example">
-                    <option selected>Pilih jenis studi</option>
-                    <option value="1">Reguler</option>
-                    <option value="2">Akselerasi</option>
-                    <option value="3">Lainnya</option>
-                </select>
-            </div>
-        </div> 
-    </div> -->
 </div>
 
 <div class="pl-8 pr-14 pt-5">
@@ -42,9 +14,9 @@
                     <div>
                         <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                         border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                        <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
-                            <!-- <img src="/assets/plus.png" alt="" class="w-5 h-5"> -->
-                            Tambah Jurusan</button>
+                        <a href="/kurikulum/tambah_jurusan">
+                            <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Jurusan</button>
+                        </a>
                     </div>
                 </div>
             </caption>
@@ -74,138 +46,48 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" >
-                            <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                        </button>
-
-                        <!-- dropdown menu -->
-                        <div id="dropdownDotsMenu" class="hidden z-10 w-44 bg-white rounded divide-y  shadow">
-                            <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                <li>
-                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Informasi Jurusan</a>
-                                </li>
-                                <li>
-                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tambah Mata Pelajaran</a>
-                                </li>
-                                <li>
-                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hapus Jurusan</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button"> 
-                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
-                            </button>
+                <% dataKurikulum.forEach(kurikulum => { %>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                            <%= kurikulum.jurusan %> 
+                        </th>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.semester %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.standarKurikulum %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.skalaPenilaian %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            Jan 4, 2022
+                        </td>
+                        <td class="py-7 px-8 ">
+                            Jan 4, 2022
+                        </td>
+                        <td class="py-7 px-8 text-right">
+                            <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" class="group">
+                                <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
                             
-                            Dropdown menu
-                            <div id="dropdownDots" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                <li>
-                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                                </li>
-                                </ul>
-                                <div class="py-1">
-                                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
+                            <!-- dropdown menu -->
+                                <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
+                                    <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                        <li>
+                                        <a href="/kurikulum/edit/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
+                                        </li>
+                                        <li>
+                                        <a href="/kurikulum/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
+                                        </li>
+                                        <li>
+                                        <a href="/kurikulum/delete/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Hapus Jurusan</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                            </div> -->
-
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
+                            </button>
+                        </td>
+                    </tr>
+                <% }) %>
             </tbody>
         </table>
     </div>
@@ -220,9 +102,9 @@
                     <div>
                         <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                         border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                        <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
-                            <!-- <img src="/assets/plus.png" alt="" class="w-5 h-5"> -->
-                            Tambah Jurusan</button>
+                        <a href="/kurikulum/tambah_jurusan">
+                            <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Jurusan</button>
+                        </a>
                     </div>
                 </div>
             </caption>
@@ -252,98 +134,48 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
+                <% dataKurikulum.forEach(kurikulum => { %>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                            <%= kurikulum.jurusan %> 
+                        </th>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.semester %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.standarKurikulum %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.skalaPenilaian %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            Jan 4, 2022
+                        </td>
+                        <td class="py-7 px-8 ">
+                            Jan 4, 2022
+                        </td>
+                        <td class="py-7 px-8 text-right">
+                            <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" class="group">
+                                <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                            
+                            <!-- dropdown menu -->
+                                <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
+                                    <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                        <li>
+                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
+                                        </li>
+                                        <li>
+                                        <a href="/kurikulum/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
+                                        </li>
+                                        <li>
+                                        <a href="/kurikulum/delete/<%= kurikulum.nama %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Hapus Jurusan</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </button>
+                        </td>
+                    </tr>
+                <% }) %>
             </tbody>
         </table>
     </div>
@@ -354,13 +186,13 @@
         <table class="w-full text-left text-gray-500">
             <caption class="p-5 font-semibold text-text-base bg-white">
                 <div class="flex items-center">
-                    <h1 class="text-left flex-1 text-display_xs">Tingkat 12</h1>
+                    <h1 class="text-left flex-1">Tingkat 12</h1>
                     <div>
                         <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                         border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                        <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
-                            <!-- <img src="/assets/plus.png" alt="" class=" flex w-5 h-5"> -->
-                            Tambah Jurusan</button>
+                        <a href="/kurikulum/tambah_jurusan">
+                            <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Jurusan</button>
+                        </a>
                     </div>
                 </div>
             </caption>
@@ -390,98 +222,48 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
-                <tr class="bg-white border-b">
-                    <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                        MIPA
-                    </th>
-                    <td class="py-7 px-8 ">
-                        1
-                    </td>
-                    <td class="py-7 px-8 ">
-                        K13
-                    </td>
-                    <td class="py-7 px-8 ">
-                        100
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 ">
-                        Jan 4, 2022
-                    </td>
-                    <td class="py-7 px-8 text-right">
-                        <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                    </td>
-                </tr>
+                <% dataKurikulum.forEach(kurikulum => { %>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                            <%= kurikulum.jurusan %> 
+                        </th>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.semester %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.standarKurikulum %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            <%= kurikulum.skalaPenilaian %>
+                        </td>
+                        <td class="py-7 px-8 ">
+                            Jan 4, 2022
+                        </td>
+                        <td class="py-7 px-8 ">
+                            Jan 4, 2022
+                        </td>
+                        <td class="py-7 px-8 text-right">
+                            <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" class="group">
+                                <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                            
+                            <!-- dropdown menu -->
+                                <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
+                                    <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                        <li>
+                                        <a href="#" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
+                                        </li>
+                                        <li>
+                                        <a href="/kurikulum/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
+                                        </li>
+                                        <li>
+                                        <a href="/kurikulum/delete/<%= kurikulum.id_jurusan %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin?')">Hapus Jurusan</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </button>
+                        </td>
+                    </tr>
+                <% }) %>
             </tbody>
         </table>
     </div>

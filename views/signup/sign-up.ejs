@@ -1,113 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <title>Sign In</title>
-</head>
-<body class="font-inter">
-    <section class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-primary-100 py-6 sm:py-12">
-        <div class="relative bg-white p-28 shadow-xl ring-1 ring-gray-200 md:mx-auto rounded-lg ">
-            <div>
-                <h1 class="text-display_md font-medium">
-                    Daftar
-                </h1>
-                <span class="text-text_md font-medium text-gray-500">Sudah punya akun? 
-                <a href="#" class="text-text_md font-medium text-text-base underline">Daftar dengan akun anda</a></span>
-            </div>
-
-            <div class="container pt-6">
-                <form action="sign up.html">
-                    <div class="flex">
-                        <div>
-                            <label for="email" class="block text-text_sm font-medium">Email</label>
-                            <input type="text" placeholder="Masukkan email" name="email" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
-                        </div>
-                        <div class="ml-14">
-                            <label for="psw" class="block text-text_sm font-medium">Password</label>
-                            <input type="password" placeholder="Masukkan password" name="psw" class="h-11 w-96 rounded-lg focus:ring-primary-600" required>
-                            <p id="helper-text-explanation" class="mt-0.5 text-text_sm text-gray-500 dark:text-gray-400">Password minimal 8 karakter</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center my-7 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"></div>
-                    
-                    <div class="flex">
-                        <div>
-                            <label for="name" class="block text-text_sm font-medium">Nama</label>
-                            <input type="text" placeholder="Nama lengkap" name="name" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
-                        </div>
-                        <div class="ml-14">
-                            <label for="date" class="block text-text_sm font-medium">Tanggal Lahir</label>
-                            <input type="date" placeholder="" name="date" class="h-11 w-96 rounded-lg focus:ring-primary-600" required>
-                        </div>
-                    </div>
-
-                    <div class="flex pt-9">
-                        <div>
-                            <label for="nip" class="block text-text_sm font-medium">NIP</label>
-                            <input type="tel" placeholder="Input nomor NIP" name="nip" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
-                        </div>
-                        <div class="ml-14">
-                            <label for="Jabatan" class="block text-text_sm font-medium">Jabatan</label>
-                            <div class="flex justify-center">
-                                <div class="mb-3 xl:w-96">
-                                  <select class="form-select appearance-none
-                                    h-11 
-                                    w-96
-                                    block
-                                    px-3
-                                    py-1.5
-                                    text-base
-                                    font-normal
-                                    text-text-base
-                                    bg-white bg-clip-padding bg-no-repeat
-                                    border border-solid border-gray-300
-                                    focus:ring-primary-600
-                                    rounded-lg
-                                    transition
-                                    ease-in-out
-                                    m-0
-                                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                                      <option selected>Pilih jabatan di sekolah</option>
-                                      <option value="1">Kepala sekolah</option>
-                                      <option value="2">Admin</option>
-                                      <option value="3">Guru</option>
-                                      <option value="4">Lainnya</option>
-                                  </select>
-                                </div>
-                              </div>
-                                        
-                        </div>
-                    </div>
-                    
-
-                    <div class="pt-9">
-                        <div>
-                            <label for="no_telp" class="block text-text_sm font-medium">No. Telepon</label>
-                            <input type="tel" placeholder="081-234-567-564" name="email" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
-                        </div>
-                    </div>
-
-                    <div class="pt-9 float-right">
-                        <button type="submit" class="bg-primary-600 text-white rounded-lg pl-8 pr-8 pt-2 pb-2" >Lanjut</button>
-                    </div>
-                    
-
-                </form>
-                
-                
-            </div>
+<section class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-primary-100 py-6 sm:py-12">
+    <div class="relative bg-white p-28 shadow-xl ring-1 ring-gray-200 md:mx-auto rounded-lg ">
+        <div>
+            <h1 class="text-display_md font-medium">
+                Daftar
+            </h1>
+            <span class="text-text_md font-medium text-gray-500">Sudah punya akun? 
+            <a href="#" class="text-text_md font-medium text-text-base underline">Daftar dengan akun anda</a></span>
         </div>
-    </section>
-    
-</body>
-</html>
+
+        <div class="container pt-6">
+            <form action="sign up.html">
+                <div class="flex">
+                    <div>
+                        <label for="email" class="block text-text_sm font-medium">Email</label>
+                        <input type="text" placeholder="Masukkan email" name="email" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
+                    </div>
+                    <div class="ml-14">
+                        <label for="psw" class="block text-text_sm font-medium">Password</label>
+                        <input type="password" placeholder="Masukkan password" name="psw" class="h-11 w-96 rounded-lg focus:ring-primary-600" required>
+                        <p id="helper-text-explanation" class="mt-0.5 text-text_sm text-gray-500 dark:text-gray-400">Password minimal 8 karakter</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center my-7 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"></div>
+                
+                <div class="flex">
+                    <div>
+                        <label for="name" class="block text-text_sm font-medium">Nama</label>
+                        <input type="text" placeholder="Nama lengkap" name="name" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
+                    </div>
+                    <div class="ml-14">
+                        <label for="date" class="block text-text_sm font-medium">Tanggal Lahir</label>
+                        <input type="date" placeholder="" name="date" class="h-11 w-96 rounded-lg focus:ring-primary-600" required>
+                    </div>
+                </div>
+
+                <div class="flex pt-9">
+                    <div>
+                        <label for="nip" class="block text-text_sm font-medium">NIP</label>
+                        <input type="tel" placeholder="Input nomor NIP" name="nip" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
+                    </div>
+                    <div class="ml-14">
+                        <label for="Jabatan" class="block text-text_sm font-medium">Jabatan</label>
+                        <div class="flex justify-center">
+                            <div class="mb-3 xl:w-96">
+                                <select class="form-select appearance-none
+                                h-11 
+                                w-96
+                                block
+                                px-3
+                                py-1.5
+                                text-base
+                                font-normal
+                                text-text-base
+                                bg-white bg-clip-padding bg-no-repeat
+                                border border-solid border-gray-300
+                                focus:ring-primary-600
+                                rounded-lg
+                                transition
+                                ease-in-out
+                                m-0
+                                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                    <option selected>Pilih jabatan di sekolah</option>
+                                    <option value="1">Kepala sekolah</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">Guru</option>
+                                    <option value="4">Lainnya</option>
+                                </select>
+                            </div>
+                            </div>
+                                    
+                    </div>
+                </div>
+                
+
+                <div class="pt-9">
+                    <div>
+                        <label for="no_telp" class="block text-text_sm font-medium">No. Telepon</label>
+                        <input type="tel" placeholder="081-234-567-564" name="email" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+                    </div>
+                </div>
+
+                <div class="pt-9 float-right">
+                    <a href="/signup_next">
+                    <button type="submit" class="bg-primary-600 text-white rounded-lg pl-8 pr-8 pt-2 pb-2">Lanjut</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
