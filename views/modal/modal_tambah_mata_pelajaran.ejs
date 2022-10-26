@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-</head>
-<body class="font-inter">
+<form action="/kurikulum/tambah_mata_pelajaran?_method=PUT" method="post">
+    <input type="hidden" name="_id" value="<%= dataJurusan._id %>"/>
     <div class="pt-5 px-9">
         <div class="border border-gray-300 rounded-lg px-9 py-7">
             <div class="mb-3 mr-5 pb-4">
@@ -20,23 +7,21 @@
             </div>
             <div class="mb-3 mr-5">
                 <label for="mata_pelajaran" class="block text-text_sm font-medium">Mata Pelajaran</label>
-                <input type="text" placeholder="Masukkan nama mata pelajaran" name="mata_pelajaran" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
+                <input type="text" placeholder="Masukkan nama mata pelajaran" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" id="namaMataPelajaran" name="namaMataPelajaran" required>
             </div>
             <div class="mb-3 mr-5 pt-5">
                 <label for="kkm" class="block text-text_sm font-medium">KKM</label>
-                <input type="text" placeholder="Input nilai KKM" name="kkm" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
+                <input type="text" placeholder="Input nilai KKM" id="kkm" name="kkm" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
                 <p id="helper-text-explanation" class="mt-0.5 text-text_sm text-gray-500 dark:text-gray-400">KKM berupa angka 0-100</p>
             </div>
             <div class="mb-3 mr-5 pt-5">
                 <label for="durasi_jam" class="block text-text_sm font-medium">Durasi Jam</label>
-                <input type="text" placeholder="Input total durasi jam belajar" name="durasi_jam" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" required>
+                <input type="text" placeholder="Input total durasi jam belajar" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" id="durasiJam" name="durasiJam" required>
             </div>
             <div class="pt-5 px-9 flex justify-end">
-                <button type="button" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">
-                    <!-- <img src="/assets/plus.png" alt="" class=" flex w-5 h-5"> -->
+                <button type="submit" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">
                     Tambah</button>
             </div>
         </div>
     </div>
-</body>
-</html>
+</form>

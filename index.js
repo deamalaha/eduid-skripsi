@@ -315,33 +315,6 @@ app.delete('/kurikulum', (req, res) => {
 })
 
 app.put('/kurikulum', (req, res) => {
-  // const errors = validationResult(req)
-  // if (!errors.isEmpty()) {
-  //   res.render('modal/modal_edit_jurusan', {
-  //     title: 'Kurikulum Dashboard - Edit Jurusan',
-  //     layout: 'layout/signup-layout',
-  //     errors: errors.array(),
-  //     dataJurusan: req.body
-  //   })
-  // } else {
-  //   await KurikulumJurusan.findOneAndUpdate(
-  //     { _id : req.params._id }, 
-  //     {
-  //       jenisStudi : req.body.jenisStudi,
-  //       jurusan: req.body.jurusan,
-  //       semester: req.body.semester,
-  //       standarKurikulum: req.body.standarKurikulum,
-  //       skalaPenilaian: req.body.skalaPenilaian
-  //     }, {
-  //       new: true
-  //     }
-  //   ).then((result) => {
-  //     req.flash('msg', 'Data jurusan berhasil diubah!')
-  //     console.log('edit success')
-  //     res.redirect('/kurikulum')
-  //   })
-  // }
-
   const { jenisStudi, tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian, _id } = req.body
   
   KurikulumJurusan.findByIdAndUpdate(
@@ -355,25 +328,28 @@ app.put('/kurikulum', (req, res) => {
   })
 })
 
-app.get('/kurikulum/tambah_mata_pelajaran/:_id', (req, res) => {
+app.get('/kurikulum/tambah_mata_pelajaran/:_id', async (req, res) => {
+  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id});
 
   res.render('modal/modal_tambah_mata_pelajaran', {
     title: 'Kurikulum Dashboard - Tambah Mata Pelajaran',
     layout: 'layout/modal-layout',
+    dataJurusan
   })
 })
 
 //OLONG REVISI YA COK
 app.put('/kurikulum/tambah_mata_pelajaran', body(), (req, res) => {
+  const { namaMataPelajaran, kkm, durasiJam, _id } = req.body
   KurikulumJurusan.updateOne(
-    { _id : req.params._id },
+    { _id : _id },
     {
       $push: {
       mataPelajaran: [
       {
-        namaMataPelajaran: req.body.namaMataPelajaran,
-        kkm: req.body.kkm,
-        durasiJam: req.body.durasiJam,
+        namaMataPelajaran,
+        kkm,
+        durasiJam,
       },
     ]}
     }, 

@@ -12,8 +12,12 @@
             <p class="text-text_md font-regular">Reguler</p>
         </div>
         <div class="pb-5">
+            <h1 class="text-text_lg font-medium">Tingkatan</h1>
+            <p class="text-text_md font-regular"><%= dataJurusan.tingkatan %></p>
+        </div>
+        <div class="pb-5">
             <h1 class="text-text_lg font-medium">Jurusan</h1>
-            <p class="text-text_md font-regular"><%= dataJurusan.jurusan %> </p>
+            <p class="text-text_md font-regular"><%= dataJurusan.jurusan %></p>
         </div>
         <div class="pb-5">
             <h1 class="text-text_lg font-medium">Semester</h1>
@@ -38,9 +42,11 @@
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                             border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                            <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
-                                <span class="mr-2"><img src="/assets/plus.png" alt="" class=" w-5 h-5"></span>
-                                Tambah Mata Pelajaran</button>
+                            <a href="/kurikulum/tambah_mata_pelajaran/<%=  dataJurusan._id %>">
+                                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
+                                    <span class="mr-2"><img src="/assets/plus.png" alt="" class=" w-5 h-5"></span>
+                                    Tambah Mata Pelajaran</button>
+                            </a>
                         </div>
                     </div>
                 </caption>
@@ -67,127 +73,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Agama
-                        </th>
-                        <td class="py-7 px-8 ">
-                            75
-                        </td>
-                        <td class="py-7 px-8 ">
-                            32
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Agama
-                        </th>
-                        <td class="py-7 px-8 ">
-                            75
-                        </td>
-                        <td class="py-7 px-8 ">
-                            32
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Agama
-                        </th>
-                        <td class="py-7 px-8 ">
-                            75
-                        </td>
-                        <td class="py-7 px-8 ">
-                            32
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Agama
-                        </th>
-                        <td class="py-7 px-8 ">
-                            75
-                        </td>
-                        <td class="py-7 px-8 ">
-                            32
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Agama
-                        </th>
-                        <td class="py-7 px-8 ">
-                            75
-                        </td>
-                        <td class="py-7 px-8 ">
-                            32
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Agama
-                        </th>
-                        <td class="py-7 px-8 ">
-                            75
-                        </td>
-                        <td class="py-7 px-8 ">
-                            32
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    
+                    <% dataJurusan.mataPelajaran.forEach(mataPelajaran => { %>
+                        <tr class="bg-white border-b">
+                            <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
+                                <%= mataPelajaran.namaMataPelajaran %>
+                            </th>
+                            <td class="py-7 px-8 ">
+                                <%= mataPelajaran.kkm %>
+                            </td>
+                            <td class="py-7 px-8 ">
+                                <%= mataPelajaran.durasiJam %>
+                            </td>
+                            <td class="py-7 px-8 ">
+                                Jan 4, 2022
+                            </td>
+                            <td class="py-7 px-8 ">
+                                Jan 4, 2022
+                            </td>
+                            <td class="py-7 px-8 text-right">
+                                <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" class="group">
+                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                    <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
+                                        <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                            <li>
+                                            <a href="/kurikulum/edit/<%= mataPelajaran._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Mata Pelajaran</a>
+                                            </li>
+                                            <li>
+                                                <form action="/kurikulum/tambah_mata_pelajaran?_method=DELETE" method="POST">
+                                                    <input type="hidden" name="_id" value="<%= mataPelajaran._id %>">
+                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Mata Pelajaran</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                    <% }) %>
                 </tbody>
             </table>
         </div>
