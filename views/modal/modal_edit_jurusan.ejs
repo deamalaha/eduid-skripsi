@@ -1,12 +1,12 @@
 <form action="/kurikulum?_method=PUT" method="post">
-    <input type="hidden" name="_id" value="<%= dataJurusan._id %>">
+    <input type="hidden" name="_id" value="<%= dataJurusan._id %>"/>
     <div class="pt-5 px-9 w-auto">
         <div class="border border-gray-300 rounded-lg px-9 py-7">
             <div class="mb-3 mr-5 pb-4">
                 <h1 class="text-text_lg font-medium">Edit Jurusan</h1>
             </div>
             <div class="mb-3 mr-5">
-                <label for="jenis-pengisian-nilai" class="block text-text_sm font-medium">Jenis Studi</label>
+                <label for="jenis-pengisian-nilai" class="block text-text_sm font-medium">Tingkatan</label>
                 <select class="form-select appearance-none
                 h-11 
                 w-96
@@ -23,10 +23,11 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" id="jenisStudi" name="jenisStudi">
-                    <option selected>Pilih jenis studi</option>
-                    <option value="Reguler">Reguler</option>
-                    <option value="Akselerasi">Akselerasi</option>
+                focus:text-text-base focus:bg-white focus:outline-none" id="tingkatan" name="tingkatan" value="<%= dataJurusan.tingkatan %>">
+                    <option selected>Pilih tingkatan</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
                 </select>
             </div>
             <div class="mb-3 mr-5 pt-5">

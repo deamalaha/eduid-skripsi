@@ -10,10 +10,11 @@ var expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator')
 require('./utils/db.js')
 
-const { Admins} = require('./utils/model/admin')
+const { Admins } = require('./utils/model/admin')
 const { KurikulumJurusan } = require('./utils/model/kurikulumJurusan')
 const { DataKelas } = require('./utils/model/dataKelas')
 const { DataMataPelajaran } = require('./utils/model/daftarMataPelajaran')
+const { ObjectId } = require('mongodb')
 
 const port = 4000
 
@@ -137,17 +138,43 @@ app.get('/siswa', async (req, res) => {
 })
 
 app.get('/siswa/tambah_kelas', (req, res) => {
+  
   res.render('modal/modal_tambah_kelas', {
     title: 'Siswa Dashboard - Tambah Kelas',
     layout: 'layout/modal-layout',
   })
 })
 
-app.post('/siswa', body(), (req, res) => {
-  DataKelas.insertMany(req.body, (error, result) => {
-    req.flash('msg', 'Kelas berhasil ditambahkan!')
-    res.redirect('/siswa')
+app.post('/siswa', body(), async (req, res) => {
+  //tambah kelas
+  const admin = await Admins.findById({ _id: req.params._id })
+  const { jenisStudi, tingkatan, jurusan, nama, standarKurikulum } = req.body
+
+  const newKelas = new DataKelas.create({
+    jenisStudi,
+    tingkatan,
+    jurusan,
+    nama,
+    standarKurikulum
   })
+
+  try {
+    admin.kelas.push(newKelas)
+    await admin.save()
+  } catch (error) {
+    res.status(500).send(error)
+  }
+ 
+  return res.status(200).json({
+    status: 'OK',
+    message: 'Kelas berhasil dibuat',
+    data: newKelas,
+  });
+
+  // DataKelas.insertMany(req.body, (error, result) => {
+  //   req.flash('msg', 'Kelas berhasil ditambahkan!')
+  //   res.redirect('/siswa')
+  // })
 })
 
 app.delete('/siswa', (req, res) => {
@@ -262,8 +289,8 @@ app.get('/kurikulum/tambah_jurusan', (req, res) => {
   })
 })
 
-app.get('/kurikulum/edit/:_id', (req, res) => {
-  const dataJurusan = req.params._id
+app.get('/kurikulum/edit/:_id', async (req, res) => {
+  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id});
 
   res.render('modal/modal_edit_jurusan', {
     title: 'Kurikulum Dashboard - Edit Jurusan',
@@ -288,35 +315,48 @@ app.delete('/kurikulum', (req, res) => {
 })
 
 app.put('/kurikulum', (req, res) => {
-  const errors = validationResult(req)
-  if (!errors.isEmpty()) {
-    res.render('modal/modal_edit_jurusan', {
-      title: 'Kurikulum Dashboard - Edit Jurusan',
-      layout: 'layout/signup-layout',
-      errors: errors.array(),
-      dataJurusan: req.body
-    })
-  } else {
-    KurikulumJurusan.updateOne(
-      { _id : req.params._id }, 
-      {
-        $set: {
-          jenisStudi : req.body.jenisStudi,
-          jurusan: req.body.jurusan,
-          semester: req.body.semester,
-          standarKurikulum: req.body.standarKurikulum,
-          skalaPenilaian: req.body.skalaPenilaian
-        }
-      }
-    ).then((result) => {
-      req.flash('msg', 'Data jurusan berhasil diubah!')
-      console.log('edit success')
-      res.redirect('/kurikulum')
-    })
-  }
+  // const errors = validationResult(req)
+  // if (!errors.isEmpty()) {
+  //   res.render('modal/modal_edit_jurusan', {
+  //     title: 'Kurikulum Dashboard - Edit Jurusan',
+  //     layout: 'layout/signup-layout',
+  //     errors: errors.array(),
+  //     dataJurusan: req.body
+  //   })
+  // } else {
+  //   await KurikulumJurusan.findOneAndUpdate(
+  //     { _id : req.params._id }, 
+  //     {
+  //       jenisStudi : req.body.jenisStudi,
+  //       jurusan: req.body.jurusan,
+  //       semester: req.body.semester,
+  //       standarKurikulum: req.body.standarKurikulum,
+  //       skalaPenilaian: req.body.skalaPenilaian
+  //     }, {
+  //       new: true
+  //     }
+  //   ).then((result) => {
+  //     req.flash('msg', 'Data jurusan berhasil diubah!')
+  //     console.log('edit success')
+  //     res.redirect('/kurikulum')
+  //   })
+  // }
+
+  const { jenisStudi, tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian, _id } = req.body
+  
+  KurikulumJurusan.findByIdAndUpdate(
+    { _id: _id},
+    { $set: {
+      jenisStudi, tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian
+    }}
+  ).then((result) => {
+    req.flash('msg', 'Jurusan berhasil diubah')
+    res.redirect('/kurikulum')
+  })
 })
 
 app.get('/kurikulum/tambah_mata_pelajaran/:_id', (req, res) => {
+
   res.render('modal/modal_tambah_mata_pelajaran', {
     title: 'Kurikulum Dashboard - Tambah Mata Pelajaran',
     layout: 'layout/modal-layout',
