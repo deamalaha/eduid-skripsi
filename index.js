@@ -1,11 +1,9 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const session = require('express-session')
-const cookieParser = require('cookie-parser')
+
 const flash = require('connect-flash')
 var methodOverride = require('method-override')
-
 var expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator')
 require('./utils/db.js')
@@ -14,24 +12,16 @@ const { Admins } = require('./utils/model/admin')
 const { KurikulumJurusan } = require('./utils/model/kurikulumJurusan')
 const { DataKelas } = require('./utils/model/dataKelas')
 const { DataMataPelajaran } = require('./utils/model/daftarMataPelajaran')
-const { ObjectId } = require('mongodb')
+const { Siswa } = require('./utils/model/siswa')
 
 const port = 4000
+const toId = mongoose.Types.ObjectId
 
 // setup
 app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(expressLayouts)
 app.use(express.urlencoded({extended: true}))
-app.use(cookieParser('secret'))
-app.use(
-  session({
-    cookie: {maxAge:600},
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-  })
-)
 app.use(flash())
 app.use(methodOverride('_method'))
 
@@ -72,7 +62,7 @@ app.post('/login', check('email', 'Email tidak valid').isEmail(), async (req, re
     });
   }
 
-  return res.redirect('/main')  
+  return res.redirect('/main/' + user._id)  
 })
 
 app.get('/signup', (req, res) => {
@@ -90,7 +80,6 @@ app.get('/signup_next', (req, res) => {
 })
 
 app.post('/signup', check('email', 'Email tidak valid').isEmail(), async (req, res) => {
-  const error = validationResult(req)
   const { email, password, name, nip, date, jabatan, noHp } = req.body
 
   const existingEmail = await Admins.findOne({ email : email })
@@ -105,7 +94,7 @@ app.post('/signup', check('email', 'Email tidak valid').isEmail(), async (req, r
     })
   }
 
-  Admins.insertMany({
+  const newAdmin = Admins.insertMany({
     name,
     date,
     nip,
@@ -115,66 +104,64 @@ app.post('/signup', check('email', 'Email tidak valid').isEmail(), async (req, r
     jabatan
   })
 
-  return res.redirect('/main')  
+  return res.redirect('/main/' + newAdmin._id)
 })
 
 // dashboard
-app.get('/main', (req, res) => {
+app.get('/main/:_id', async (req, res) => {
+  const admin = await Admins.findById({ _id: req.params._id})
+  
   res.render('dashboard/main_dashboard', {
     title: 'Halaman Utama',
     layout: 'layout/main-layout',
+    admin
   })
 })
 
 
-app.get('/siswa', async (req, res) => {
-  const dataKelas = await DataKelas.find()
+app.get('/siswa/:_id', async (req, res) => {
+  const admin = await Admins.findById({ _id: req.params._id}).populate('kelas')
 
   res.render('dashboard/siswa_dashboard', {
     title: 'Siswa Dashboard',
     layout: 'layout/main-layout',
-    dataKelas,
+    admin
   })
 })
 
-app.get('/siswa/tambah_kelas', (req, res) => {
+app.get('/siswa/:_id/tambah_kelas', async (req, res) => {
+  const admin = await Admins.findById({ _id: req.params._id })
+  console.log(admin)
   
   res.render('modal/modal_tambah_kelas', {
     title: 'Siswa Dashboard - Tambah Kelas',
     layout: 'layout/modal-layout',
+    admin
   })
+  
 })
 
 app.post('/siswa', body(), async (req, res) => {
-  //tambah kelas
-  const admin = await Admins.findById({ _id: req.params._id })
-  const { jenisStudi, tingkatan, jurusan, nama, standarKurikulum } = req.body
 
-  const newKelas = new DataKelas.create({
-    jenisStudi,
+  //tambah kelas
+  const admin = await Admins.findById({ _id: req.body.adminId })
+  const { tingkatan, jurusan, nama, standarKurikulum} = req.body
+  
+  const newKelas = await DataKelas.create({
+    nama,
     tingkatan,
     jurusan,
-    nama,
     standarKurikulum
   })
+  
+  console.log(newKelas)
+  console.log(admin)
 
-  try {
-    admin.kelas.push(newKelas)
-    await admin.save()
-  } catch (error) {
-    res.status(500).send(error)
-  }
- 
-  return res.status(200).json({
-    status: 'OK',
-    message: 'Kelas berhasil dibuat',
-    data: newKelas,
-  });
+  admin.kelas.push(newKelas)
+  admin.save()
 
-  // DataKelas.insertMany(req.body, (error, result) => {
-  //   req.flash('msg', 'Kelas berhasil ditambahkan!')
-  //   res.redirect('/siswa')
-  // })
+  console.log(admin, 'success cuy')
+  return res.redirect('/siswa/' + req.body.adminId)
 })
 
 app.delete('/siswa', (req, res) => {
@@ -185,6 +172,7 @@ app.delete('/siswa', (req, res) => {
 })
 
 app.put('/siswa', (req, res) => {
+
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     res.render('modal/modal_edit_kelas', {
@@ -212,38 +200,26 @@ app.put('/siswa', (req, res) => {
   }
 })
 
-app.get('/siswa/tambah_siswa', (req, res) => {
-
-  res.render('modal/modal_tambah_siswa', {
-    title: 'modal/modal_tambah_siswa',
-    layout: 'layout/modal-layout',
+app.put('/siswa/tambah_siswa', body(), (req, res) => {
+  const { namaSiswa, nisn, _id } = req.body
+  
+  const addedSiswa = new Siswa({
+    namaSiswa,
+    nisn
   })
-})
 
-app.put('/siswa/tambah_siswa', (req, res) => {
-  const errors = validationResult(req)
-  if (!errors.isEmpty()) {
-    res.render('modal/modal_tambah_siswa', {
-      title: 'modal/modal_tambah_siswa',
-      layout: 'layout/modal-layout',
-      errors: errors.array(),
-      dataKelas: req.body
-    })
-  } else {
-    DataKelas.updateOne(
-      { _id : mongoose.Types.ObjectId(req.params._id) }, 
-      {
-        $push: {
-        siswa: [{
-          namaSiswa: req.body.namaSiswa,
-          nisn: req.body.nisn,
-        }]}}
-    ).then((result) => {
-      req.flash('msg', 'Data jurusan berhasil diubah!')
-      console.log('edit success')
-      res.redirect('/kurikulum')
-    })
-  }
+  DataKelas.updateOne(
+    {_id: _id}, 
+    {$push: 
+      {siswa : {
+        addedSiswa
+      }
+    }}, 
+    (error, result) => {
+    console.log('siswa embedded success')
+    req.flash('msg', 'Siswa berhasil ditambahkan!')
+    res.redirect('/siswa')}
+  )
 })
 
 app.get('/siswa/:_id', async (req, res) => {
@@ -338,7 +314,6 @@ app.get('/kurikulum/tambah_mata_pelajaran/:_id', async (req, res) => {
   })
 })
 
-//OLONG REVISI YA COK
 app.put('/kurikulum/tambah_mata_pelajaran', body(), (req, res) => {
   const { namaMataPelajaran, kkm, durasiJam, _id } = req.body
   KurikulumJurusan.updateOne(
