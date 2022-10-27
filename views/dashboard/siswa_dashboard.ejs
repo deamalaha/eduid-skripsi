@@ -223,7 +223,7 @@
                                             
                                             <a href="/siswa/edit/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Kelas</a>
                                             
-                                            <a href="/siswa/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
+                                            <a href="/siswa/<%= admin._id %>/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
                                             
                                                 <form action="/siswa?_method=DELETE" method="POST">
                                                     <input type="hidden" name="_id" value="<%= kelas._id %>">

@@ -153,14 +153,10 @@ app.post('/siswa', body(), async (req, res) => {
     jurusan,
     standarKurikulum
   })
-  
-  console.log(newKelas)
-  console.log(admin)
 
   admin.kelas.push(newKelas)
   admin.save()
 
-  console.log(admin, 'success cuy')
   return res.redirect('/siswa/' + req.body.adminId)
 })
 
@@ -200,37 +196,48 @@ app.put('/siswa', (req, res) => {
   }
 })
 
-app.put('/siswa/tambah_siswa', body(), (req, res) => {
-  const { namaSiswa, nisn, _id } = req.body
-  
-  const addedSiswa = new Siswa({
-    namaSiswa,
-    nisn
-  })
+app.get('/siswa/:adminId/tambah_siswa/:kelasId', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params.adminId})
+  const dataKelas = await DataKelas.findOne({ _id: req.params.kelasId })
 
-  DataKelas.updateOne(
-    {_id: _id}, 
-    {$push: 
-      {siswa : {
-        addedSiswa
-      }
-    }}, 
-    (error, result) => {
-    console.log('siswa embedded success')
-    req.flash('msg', 'Siswa berhasil ditambahkan!')
-    res.redirect('/siswa')}
-  )
+  res.render('modal/modal_tambah_siswa', {
+    title: 'modal/modal_tambah_siswa',
+    layout: 'layout/modal-layout',
+    dataKelas,
+    admin
+  })
 })
 
-app.get('/siswa/:_id', async (req, res) => {
+app.post('/siswa/tambah_siswa', body(), async (req, res) => {
+  const dataKelas = await DataKelas.findOne({ _id: req.body.kelasId })
+  const { namaSiswa, nisn } = req.body
+  
+  const newSiswa = await Siswa.create({
+    namaSiswa,
+    nisn,
+    kelas: req.body.kelasId
+  })
 
-  const dataKelas = await DataKelas.findOne({ _id : req.params._id})
+  dataKelas.siswa.push(newSiswa)
+  dataKelas.save()
+
+  console.log(dataKelas, 'success tambah siswa')
+  return res.redirect('/siswa/' + req.body.adminId + '/' + req.body.kelasId)
+})
+
+app.get('/siswa/:adminId/:kelasId', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params.adminId})
+  const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId}).populate('siswa')
+
+  console.log(dataKelas)
   
   res.render('add/tambah_siswa', {
     title: 'Siswa Dashboard - Tambah Siswa',
     layout: 'layout/main-layout',
-    dataKelas
+    dataKelas,
+    admin
   })
+
 })
 
 app.get('/student_report', (req, res) => {
