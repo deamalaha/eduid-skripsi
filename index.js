@@ -434,16 +434,6 @@ app.put('/kurikulum', (req, res) => {
   })
 })
 
-// app.get('/kurikulum/tambah_mata_pelajaran/:_id', async (req, res) => {
-//   const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id});
-
-//   res.render('modal/modal_tambah_mata_pelajaran', {
-//     title: 'Kurikulum Dashboard - Tambah Mata Pelajaran',
-//     layout: 'layout/modal-layout',
-//     dataJurusan
-//   })
-// })
-
 app.get('/tambah_nilai_siswa', (req, res) => {
   res.render('add/tambah_nilai_siswa', {
     title: 'Siswa Dashboard - Tambah Nilai',
