@@ -1,15 +1,14 @@
 <form action="/siswa" method="post">
-    <input type="hidden" name="adminId" value="<%= admin._id %>">
     <div class="pt-5 px-9">
         <div class="border border-gray-300 rounded-lg px-9 py-7">
             <div class="mb-3 mr-5 pb-4">
-                <h1 class="text-text_lg font-medium">Tambah Kelas</h1>
+                <h1 class="text-text_lg font-medium">Edit Kelas</h1>
             </div>
             <div class="mb-3 mr-5">
                 <label for="nama_kelas" class="block text-text_sm font-medium">Nama Kelas</label>
                 <input type="text" placeholder="Input nama kelas" class="h-11 w-96 rounded-lg ring-gray-300 focus:ring-primary-600" id="nama" name="nama" required>
             </div>
-            <!-- <div class="mb-3 mr-5 pt-5">
+            <div class="mb-3 mr-5 pt-5">
                 <label for="Tingkatan" class="block text-text_sm font-medium">Tingkatan</label>
                 <select class="form-select appearance-none
                 h-11 
@@ -81,34 +80,7 @@
                     <option value="K13">K13</option>
                     <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
                 </select>
-            </div> -->
-
-            <div class="mb-3 mr-5 pt-5">
-                <label for="jurusan" class="block text-text_sm font-medium">Pilih Kurikulum Jurusan</label>
-                <select class="form-select appearance-none
-                h-11 
-                w-96
-                block
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-text-base
-                bg-white bg-clip-padding bg-no-repeat
-                border border-solid border-gray-300
-                focus:ring-primary-600
-                transition
-                ease-in-out
-                m-0
-                rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" id="kurikulumJurusan" name="kurikulumJurusan">
-                    <option selected>Pilih kurikulum</option>
-                    <% jurusan.forEach(item => { %>
-                        <option value="<%= item._id %>"><%= item.jurusan %> / <%= item.tingkatan %> / <%= item.semeter %></option>
-                    <% }) %>
-                </select>
             </div>
-
             <div class="pt-5 px-9 flex justify-end">
                 <button type="submit" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-5 py-3">Tambah</button>
             </div>
