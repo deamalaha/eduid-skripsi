@@ -70,10 +70,15 @@
 </aside>
 
 <main class="flex-1 ml-64 overflow-y-scroll max-h-screen">
-    <div class="pt-12 pl-9 flex">
-        <div>
+    <div class="pt-12 pl-9 pr-14 flex items-center">
+        <div class="flex-1">
             <h1 class="text-display_sm font-medium">Kurikulum Tingkatan</h1>
             <p class="text-text_md font-regular text-gray-500">Atur kurikulum dan mata pelajaran setiap tingkatan</p>
+        </div>
+        <div>
+            <a href="/kurikulum/<%= admin._id %>/tambah_jurusan">
+                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Jurusan</button>
+            </a>
         </div>
     </div>
     
@@ -86,9 +91,6 @@
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                             border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                            <a href="/kurikulum/<%= admin._id %>/tambah_jurusan">
-                                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Jurusan</button>
-                            </a>
                         </div>
                     </div>
                 </caption>
@@ -176,9 +178,6 @@
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                             border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                            <a href="/kurikulum/tambah_jurusan">
-                                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Jurusan</button>
-                            </a>
                         </div>
                     </div>
                 </caption>
@@ -268,9 +267,6 @@
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                             border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                            <a href="/kurikulum/tambah_jurusan">
-                                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Jurusan</button>
-                            </a>
                         </div>
                     </div>
                 </caption>
