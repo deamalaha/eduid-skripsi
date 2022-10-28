@@ -11,11 +11,9 @@ require('./utils/db.js')
 const { Admins } = require('./utils/model/admin')
 const { KurikulumJurusan } = require('./utils/model/kurikulumJurusan')
 const { DataKelas } = require('./utils/model/dataKelas')
-const { DataMataPelajaran } = require('./utils/model/daftarMataPelajaran')
 const { Siswa } = require('./utils/model/siswa')
 
 const port = 4000
-const toId = mongoose.Types.ObjectId
 
 // setup
 app.set('view engine','ejs')
@@ -165,6 +163,7 @@ app.post('/siswa', body(), async (req, res) => {
 })
 
 app.delete('/siswa', (req, res) => {
+  
   DataKelas.deleteOne({ _id : req.body._id}).then((result) => {
     req.flash('msg', 'Kelas berhasil dihapus')
     res.redirect('/siswa')
@@ -288,7 +287,7 @@ app.get('/kurikulum/edit/:_id', async (req, res) => {
 
 
 app.post('/kurikulum', body(), async (req, res) => {
-  const { tingkatan, semester, standarKurikulum, skalaPenilaian } = req.body
+  const { jurusan, tingkatan, semester, standarKurikulum, skalaPenilaian, adminId } = req.body
 
   if(req.body.jurusan === 'MIPA') {
     const MIPAmatpel = [{
@@ -299,9 +298,51 @@ app.post('/kurikulum', body(), async (req, res) => {
       namaMataPelajaran: 'Matematika',
       kkm: '70',
       durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Fisika',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Kimia',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Pendidikan Agama',
+      kkm: '70',
+      durasiJam: '32'
+    }
+    , {
+      namaMataPelajaran: 'PPKN',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Matematika Wajib',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Sejarah Indonesia',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Bahasa Inggris',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Seni Budaya',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Pendidikan Olahraga',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Prakarya dan Kewirausahaan',
+      kkm: '70',
+      durasiJam: '32'
     }]
 
     await KurikulumJurusan.create({
+      jurusan,
       tingkatan,
       semester,
       standarKurikulum,
@@ -317,9 +358,51 @@ app.post('/kurikulum', body(), async (req, res) => {
       namaMataPelajaran: 'Sejarah',
       kkm: '70',
       durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Sosiologi',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Ekonomi',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Pendidikan Agama',
+      kkm: '70',
+      durasiJam: '32'
+    }
+    , {
+      namaMataPelajaran: 'PPKN',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Matematika Wajib',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Sejarah Indonesia',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Bahasa Inggris',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Seni Budaya',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Pendidikan Olahraga',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Prakarya dan Kewirausahaan',
+      kkm: '70',
+      durasiJam: '32'
     }]
 
     await KurikulumJurusan.create({
+      jurusan,
       tingkatan,
       semester,
       standarKurikulum,
@@ -328,13 +411,12 @@ app.post('/kurikulum', body(), async (req, res) => {
     })
   }
 
-  //return res.redirect('/kurikulum/' +)
+  return res.redirect('/kurikulum/' + adminId)
 })
 
 app.delete('/kurikulum', (req, res) => {
-  KurikulumJurusan.deleteOne({ _id : req.body._id}).then((result) => {
-    req.flash('msg', 'Jurusan berhasil dihapus')
-    res.redirect('/kurikulum')
+  KurikulumJurusan.deleteOne({ _id : req.body.jurusanId}).then((result) => {
+    res.redirect('/kurikulum/' + req.body.adminId)
   })
 })
 

@@ -151,7 +151,8 @@
                                             </li>
                                             <li>
                                                 <form action="/kurikulum?_method=DELETE" method="POST">
-                                                    <input type="hidden" name="_id" value="<%= kurikulum._id %>">
+                                                    <input type="hidden" name="jurusanId" value="<%= kurikulum._id %>">
+                                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
                                                     <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Jurusan</button>
                                                 </form>
                                             </li>
@@ -243,6 +244,7 @@
                                             <li>
                                                 <form action="/kurikulum?_method=DELETE" method="POST">
                                                     <input type="hidden" name="_id" value="<%= kurikulum._id %>">
+                                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
                                                     <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Jurusan</button>
                                                 </form>
                                             </li>
@@ -334,6 +336,7 @@
                                             <li>
                                                 <form action="/kurikulum?_method=DELETE" method="POST">
                                                     <input type="hidden" name="_id" value="<%= kurikulum._id %>">
+                                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
                                                     <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Jurusan</button>
                                                 </form>
                                             </li>
