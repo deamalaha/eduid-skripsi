@@ -120,8 +120,6 @@ app.get('/main/:_id', async (req, res) => {
 
 
 app.get('/siswa/:_id', async (req, res) => {
-
-  //var populateQuery = [{path:'books', select:'title pages'}, {path:'movie', select:'director'}];
   const admin = await Admins.findById({ _id: req.params._id}).populate({path:'kelas', populate:{path:'jurusan'}})
 
   res.render('dashboard/siswa_dashboard', {
@@ -130,15 +128,11 @@ app.get('/siswa/:_id', async (req, res) => {
     admin
   })
 
-  const filter = admin.kelas.filter((kelas) => kelas?.jurusan?.tingkatan === '12')
-
-  console.log(filter, 'test')
 })
 
 app.get('/siswa/:_id/tambah_kelas', async (req, res) => {
   const jurusan = await KurikulumJurusan.find()
   const admin = await Admins.findById({ _id: req.params._id })
-  console.log(admin)
   
   res.render('modal/modal_tambah_kelas', {
     title: 'Siswa Dashboard - Tambah Kelas',
@@ -155,8 +149,6 @@ app.post('/siswa', body(), async (req, res) => {
   
   const admin = await Admins.findById({ _id: req.body.adminId })
   const jurusan = await KurikulumJurusan.findOne({ _id: kurikulumJurusan})
-
-  console.log(nama, kurikulumJurusan)
   
   const newKelas = await DataKelas.create({
     nama,
@@ -233,15 +225,12 @@ app.post('/siswa/tambah_siswa', body(), async (req, res) => {
   dataKelas.siswa.push(newSiswa)
   dataKelas.save()
 
-  console.log(dataKelas, 'success tambah siswa')
   return res.redirect('/siswa/' + req.body.adminId + '/' + req.body.kelasId)
 })
 
 app.get('/siswa/:adminId/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId}).populate('siswa jurusan')
-
-  console.log(dataKelas)
   
   res.render('add/tambah_siswa', {
     title: 'Siswa Dashboard - Tambah Siswa',
@@ -299,10 +288,6 @@ app.get('/kurikulum/edit/:_id', async (req, res) => {
 
 
 app.post('/kurikulum', body(), async (req, res) => {
-  // KurikulumJurusan.insertMany(req.body, (error, result) => {
-  //   req.flash('msg', 'Jurusan berhasil ditambahkan!')
-  //   res.redirect('/kurikulum')
-  // })
   const { tingkatan, semester, standarKurikulum, skalaPenilaian } = req.body
 
   if(req.body.jurusan === 'MIPA') {
@@ -342,8 +327,6 @@ app.post('/kurikulum', body(), async (req, res) => {
       mataPelajaran: IPSmatpel
     })
   }
-
-  console.log('success')
 
   //return res.redirect('/kurikulum/' +)
 })
@@ -394,7 +377,6 @@ app.put('/kurikulum/tambah_mata_pelajaran', body(), (req, res) => {
     ]}
     }, 
     (error, result) => {
-    console.log('embedded success')
     req.flash('msg', 'Mata pelajaran berhasil ditambahkan!')
     res.redirect('/kurikulum')
   })
@@ -426,7 +408,6 @@ app.get('/tambah_nilai_siswa', (req, res) => {
   })
 })
 
- 
 app.listen(port, () => {
   console.log(`EduID listening on port localhost:${port}`)
 })
