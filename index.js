@@ -166,6 +166,33 @@ app.delete('/siswa/hapusKelas', (req, res) => {
   })
 })
 
+app.get('/siswa/:adminId/:kelasId/:siswaId/edit', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params.adminId})
+  const siswa = await Siswa.findOne({ _id : req.params.siswaId})
+  const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId})
+  
+  res.render('modal/modal_edit_siswa', {
+    title: 'Siswa Dashboard - Edit Siswa',
+    layout: 'layout/main-layout',
+    siswa,
+    admin,
+    dataKelas
+  })
+})
+
+app.put('/siswa/editSiswa', body(), async (req, res) => {
+  const { namaSiswa, nisn, siswaId, adminId, kelasId } = req.body
+
+  await Siswa.findByIdAndUpdate(
+    { _id: siswaId},
+    { 
+      namaSiswa, nisn
+    }
+  ).then((result) => {
+    res.redirect('/siswa/' + adminId + '/' + kelasId)
+  })
+})
+
 app.get('/siswa/:adminId/edit/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId});
@@ -226,6 +253,7 @@ app.post('/siswa/tambah_siswa', body(), async (req, res) => {
 
   return res.redirect('/siswa/' + req.body.adminId + '/' + req.body.kelasId)
 })
+
 
 app.get('/siswa/:adminId/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
