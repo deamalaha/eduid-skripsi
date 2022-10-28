@@ -28,6 +28,7 @@ app.get('/login', (req, res) => {
   })
 })
 
+//Login
 app.post('/login', check('email', 'Email tidak valid').isEmail(), async (req, res) => {
   const error = validationResult(req)
   const {email, password } = req.body
@@ -61,6 +62,7 @@ app.post('/login', check('email', 'Email tidak valid').isEmail(), async (req, re
   return res.redirect('/main/' + user._id)  
 })
 
+// Sign Up
 app.get('/signup', (req, res) => {
   res.render('signup/sign-up', {
     title: 'Daftar',
@@ -103,7 +105,7 @@ app.post('/signup', check('email', 'Email tidak valid').isEmail(), async (req, r
   return res.redirect('/main/' + newAdmin._id)
 })
 
-// dashboard
+// Main dashboard
 app.get('/main/:_id', async (req, res) => {
   const admin = await Admins.findById({ _id: req.params._id})
   
@@ -114,7 +116,7 @@ app.get('/main/:_id', async (req, res) => {
   })
 })
 
-
+// Siswa Dashboard
 app.get('/siswa/:_id', async (req, res) => {
   const admin = await Admins.findById({ _id: req.params._id}).populate({path:'kelas', populate:{path:'jurusan'}})
 
@@ -126,6 +128,7 @@ app.get('/siswa/:_id', async (req, res) => {
 
 })
 
+// Tambah Kelas Modal
 app.get('/siswa/:_id/tambah_kelas', async (req, res) => {
   const jurusan = await KurikulumJurusan.find()
   const admin = await Admins.findById({ _id: req.params._id })
@@ -139,7 +142,7 @@ app.get('/siswa/:_id/tambah_kelas', async (req, res) => {
 })
 
 
-//tambah kelas
+// Tambah Kelas Function
 app.post('/siswa', body(), async (req, res) => {
   const { nama, kurikulumJurusan, adminId} = req.body
   
@@ -160,12 +163,14 @@ app.post('/siswa', body(), async (req, res) => {
   return res.redirect('/siswa/' + adminId)
 })
 
+// Delete Kelas Function
 app.delete('/siswa/hapusKelas', (req, res) => {
   DataKelas.deleteOne({ _id : req.body.kelasId}).then((result) => {
     res.redirect('/siswa/' + req.body.adminId)
   })
 })
 
+// Edit Siswa Modal
 app.get('/siswa/:adminId/:kelasId/:siswaId/edit', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const siswa = await Siswa.findOne({ _id : req.params.siswaId})
@@ -180,6 +185,7 @@ app.get('/siswa/:adminId/:kelasId/:siswaId/edit', async (req, res) => {
   })
 })
 
+// Edit Siswa Function
 app.put('/siswa/editSiswa', body(), async (req, res) => {
   const { namaSiswa, nisn, siswaId, adminId, kelasId } = req.body
 
@@ -193,6 +199,7 @@ app.put('/siswa/editSiswa', body(), async (req, res) => {
   })
 })
 
+// Edit Kelas Modal
 app.get('/siswa/:adminId/edit/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId});
@@ -207,25 +214,24 @@ app.get('/siswa/:adminId/edit/:kelasId', async (req, res) => {
   })
 })
 
-app.put('/siswa', (req, res) => {
+// Edit Kelas Function
+app.put('/siswa/editKelas', async (req, res) => {
 
-    DataKelas.findOneAndUpdate(
-      { _id : req.body._id }, 
+  const { nama, kurikulumJurusan, adminId, kelasId } = req.body
+
+    await DataKelas.findOneAndUpdate(
+      { _id : kelasId }, 
       {
-        $set: {
-          jenisStudi : req.body.jenisStudi,
-          jurusan: req.body.jurusan,
-          nama: req.body.nama,
-          standarKurikulum: req.body.standarKurikulum,
-          tingkatan: req.body.tingkatan
-        }
+          nama,
+          jurusan: kurikulumJurusan,
       }
     ).then((result) => {
-      res.redirect('/siswa')
+      res.redirect('/siswa/' + adminId)
     })
   }
 )
 
+// Tambah Siswa Modal
 app.get('/siswa/:adminId/tambah_siswa/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const dataKelas = await DataKelas.findOne({ _id: req.params.kelasId })
@@ -238,6 +244,7 @@ app.get('/siswa/:adminId/tambah_siswa/:kelasId', async (req, res) => {
   })
 })
 
+// Tambah Siswa Function
 app.post('/siswa/tambah_siswa', body(), async (req, res) => {
   const dataKelas = await DataKelas.findOne({ _id: req.body.kelasId })
   const { namaSiswa, nisn } = req.body
@@ -254,7 +261,7 @@ app.post('/siswa/tambah_siswa', body(), async (req, res) => {
   return res.redirect('/siswa/' + req.body.adminId + '/' + req.body.kelasId)
 })
 
-
+// Siswa Dashboard - Tambah Siswa
 app.get('/siswa/:adminId/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId}).populate('siswa jurusan')
@@ -267,13 +274,14 @@ app.get('/siswa/:adminId/:kelasId', async (req, res) => {
   })
 })
 
+// Hapus Siswa Function
 app.delete('/siswa/hapusSiswa', (req, res) => {
   Siswa.deleteOne({ _id : req.body.siswaId}).then((result) => {
     res.redirect('/siswa/' + req.body.adminId + '/' + req.body.kelasId)
   })
 })
 
-// tambah nilai siswa
+// Tambah Nilai Siswa Dashboard
 app.get('/siswa/:adminId/:kelasId/:siswaId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const dataKelas = await DataKelas.find()
@@ -288,6 +296,7 @@ app.get('/siswa/:adminId/:kelasId/:siswaId', async (req, res) => {
   })
 })
 
+// Student Report Dashboard
 app.get('/student_report', (req, res) => {
   res.render('dashboard/student_report', {
     title: 'Student Report',
@@ -295,6 +304,7 @@ app.get('/student_report', (req, res) => {
   })
 })
 
+// Data Sharing Dashboard
 app.get('/data_sharing', (req, res) => {
   res.render('dashboard/data-sharing_dashboard', {
     title: 'Data Sharing',
@@ -302,6 +312,7 @@ app.get('/data_sharing', (req, res) => {
   })
 })
 
+// Kurikulum Dashboard
 app.get('/kurikulum/:_id', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params._id})
   const dataKurikulum = await KurikulumJurusan.find()
@@ -314,6 +325,7 @@ app.get('/kurikulum/:_id', async (req, res) => {
   })
 })
 
+// Tambah Jurusan Modal
 app.get('/kurikulum/:_id/tambah_jurusan', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params._id})
 
@@ -324,6 +336,7 @@ app.get('/kurikulum/:_id/tambah_jurusan', async (req, res) => {
   })
 })
 
+// Edit Jurusan Modal
 app.get('/kurikulum/:adminId/edit/:jurusanId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
   const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params.jurusanId});
@@ -336,7 +349,7 @@ app.get('/kurikulum/:adminId/edit/:jurusanId', async (req, res) => {
   })
 })
 
-
+// Tambah Jurusan Function
 app.post('/kurikulum', body(), async (req, res) => {
   const { jurusan, tingkatan, semester, standarKurikulum, skalaPenilaian, adminId } = req.body
 
@@ -465,12 +478,14 @@ app.post('/kurikulum', body(), async (req, res) => {
   return res.redirect('/kurikulum/' + adminId)
 })
 
+// Delete Jurusan Function
 app.delete('/kurikulum/hapusJurusan', (req, res) => {
   KurikulumJurusan.deleteOne({ _id : req.body.jurusanId}).then((result) => {
     res.redirect('/kurikulum/' + req.body.adminId)
   })
 })
 
+// Edit Jurusan Function
 app.put('/kurikulum/editJurusan', body(), async (req, res) => {
   const { tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian, jurusanId, adminId } = req.body
 
