@@ -8,6 +8,12 @@ const Admins = mongoose.model('Admin', {
     jabatan: String,
     email: String,
     password: String,
+    jurusan:[{
+      type: mongoose.Schema.Types.ObjectId, ref: 'jurusan',
+    }],
+    kelas: [{
+      type: mongoose.Schema.Types.ObjectId, ref: 'kelas',
+    }]
 })
 
 module.exports = { Admins }

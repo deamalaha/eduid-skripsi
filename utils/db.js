@@ -1,4 +1,3 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://deamalaha:ipan1203@eduid-skripsi.y8juuu1.mongodb.net/?retryWrites=true&w=majority";
 const mongoose = require('mongoose')
 
