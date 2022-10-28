@@ -149,9 +149,6 @@
                                             <a href="/kurikulum/edit/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
                                             </li>
                                             <li>
-                                            <a href="/kurikulum/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Mata Pelajaran</a>
-                                            </li>
-                                            <li>
                                                 <form action="/kurikulum?_method=DELETE" method="POST">
                                                     <input type="hidden" name="jurusanId" value="<%= kurikulum._id %>">
                                                     <input type="hidden" name="adminId" value="<%= admin._id %>">
@@ -238,9 +235,6 @@
                                             <a href="#" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
                                             </li>
                                             <li>
-                                            <a href="/kurikulum/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
-                                            </li>
-                                            <li>
                                                 <form action="/kurikulum?_method=DELETE" method="POST">
                                                     <input type="hidden" name="_id" value="<%= kurikulum._id %>">
                                                     <input type="hidden" name="adminId" value="<%= admin._id %>">
@@ -325,9 +319,6 @@
                                         <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
                                             <li>
                                             <a href="#" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Jurusan</a>
-                                            </li>
-                                            <li>
-                                            <a href="/kurikulum/<%= kurikulum._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Tambah Mata Pelajaran</a>
                                             </li>
                                             <li>
                                                 <form action="/kurikulum?_method=DELETE" method="POST">
