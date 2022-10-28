@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
-const flash = require('connect-flash')
 var methodOverride = require('method-override')
 var expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator')
@@ -20,7 +19,6 @@ app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(expressLayouts)
 app.use(express.urlencoded({extended: true}))
-app.use(flash())
 app.use(methodOverride('_method'))
 
 app.get('/login', (req, res) => {
@@ -143,7 +141,7 @@ app.get('/siswa/:_id/tambah_kelas', async (req, res) => {
 
 //tambah kelas
 app.post('/siswa', body(), async (req, res) => {
-  const { nama, kurikulumJurusan} = req.body
+  const { nama, kurikulumJurusan, adminId} = req.body
   
   const admin = await Admins.findById({ _id: req.body.adminId })
   const jurusan = await KurikulumJurusan.findOne({ _id: kurikulumJurusan})
@@ -159,14 +157,12 @@ app.post('/siswa', body(), async (req, res) => {
   admin.kelas.push(newKelas)
   admin.save()
 
-  return res.redirect('/siswa/' + req.body.adminId)
+  return res.redirect('/siswa/' + adminId)
 })
 
-app.delete('/siswa', (req, res) => {
-  
-  DataKelas.deleteOne({ _id : req.body._id}).then((result) => {
-    req.flash('msg', 'Kelas berhasil dihapus')
-    res.redirect('/siswa')
+app.delete('/siswa/hapusKelas', (req, res) => {
+  DataKelas.deleteOne({ _id : req.body.kelasId}).then((result) => {
+    res.redirect('/siswa/' + req.body.adminId)
   })
 })
 
@@ -193,7 +189,6 @@ app.put('/siswa', (req, res) => {
         }
       }
     ).then((result) => {
-      req.flash('msg', 'Data kelas berhasil diubah!')
       res.redirect('/siswa')
     })
   }
@@ -236,6 +231,12 @@ app.get('/siswa/:adminId/:kelasId', async (req, res) => {
     layout: 'layout/main-layout',
     dataKelas,
     admin
+  })
+})
+
+app.delete('/siswa/hapusSiswa', (req, res) => {
+  Siswa.deleteOne({ _id : req.body.siswaId}).then((result) => {
+    res.redirect('/siswa/' + req.body.adminId + '/' + req.body.kelasId)
   })
 })
 
@@ -429,59 +430,19 @@ app.put('/kurikulum', (req, res) => {
       jenisStudi, tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian
     }}
   ).then((result) => {
-    req.flash('msg', 'Jurusan berhasil diubah')
     res.redirect('/kurikulum')
   })
 })
 
-app.get('/kurikulum/tambah_mata_pelajaran/:_id', async (req, res) => {
-  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id});
+// app.get('/kurikulum/tambah_mata_pelajaran/:_id', async (req, res) => {
+//   const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id});
 
-  res.render('modal/modal_tambah_mata_pelajaran', {
-    title: 'Kurikulum Dashboard - Tambah Mata Pelajaran',
-    layout: 'layout/modal-layout',
-    dataJurusan
-  })
-})
-
-app.put('/kurikulum/tambah_mata_pelajaran', body(), (req, res) => {
-  const { namaMataPelajaran, kkm, durasiJam, _id } = req.body
-  KurikulumJurusan.updateOne(
-    { _id : _id },
-    {
-      $push: {
-      mataPelajaran: [
-      {
-        namaMataPelajaran,
-        kkm,
-        durasiJam,
-      },
-    ]}
-    }, 
-    (error, result) => {
-    req.flash('msg', 'Mata pelajaran berhasil ditambahkan!')
-    res.redirect('/kurikulum')
-  })
-})
-
-app.delete('/kurikulum/tambah_mata_pelajaran', (req, res) => {
-  DataMataPelajaran.deleteOne({ _id : req.body._id}).then((result) => {
-    req.flash('msg', 'Mata pelajaran berhasil dihapus')
-    res.redirect('/kurikulum')
-  })
-})
-
-app.get('/kurikulum/:_id', async (req, res) => {
-
-  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id});
-  
-  res.render('add/tambah_mata_pelajaran', {
-    title: 'Kurikulum Dashboard - Tambah Mata Pelajaran',
-    layout: 'layout/main-layout',
-    dataJurusan,
-  })
-})
-
+//   res.render('modal/modal_tambah_mata_pelajaran', {
+//     title: 'Kurikulum Dashboard - Tambah Mata Pelajaran',
+//     layout: 'layout/modal-layout',
+//     dataJurusan
+//   })
+// })
 
 app.get('/tambah_nilai_siswa', (req, res) => {
   res.render('add/tambah_nilai_siswa', {

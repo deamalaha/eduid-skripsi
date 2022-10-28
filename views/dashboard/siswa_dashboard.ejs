@@ -146,9 +146,10 @@
                                             <a href="/siswa/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
                                             </li>
                                             <li>
-                                                <form action="/siswa?_method=DELETE" method="POST">
-                                                    <input type="hidden" name="_id" value="<%= kelas._id %>">
-                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Jurusan</button>
+                                                <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
+                                                    <input type="hidden" name="kelasId" value="<%= kelas._id %>">
+                                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
+                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jkelas?')">Hapus Kelas</button>
                                                 </form>
                                             </li>
                                         </ul>
@@ -219,16 +220,14 @@
                                     <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
                                     <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
                                         <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                            
+        
                                             <a href="/siswa/edit/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Kelas</a>
-                                            
                                             <a href="/siswa/<%= admin._id %>/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
-                                            
-                                                <form action="/siswa?_method=DELETE" method="POST">
-                                                    <input type="hidden" name="_id" value="<%= kelas._id %>">
-                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Jurusan</button>
-                                                </form>
-                                            
+                                            <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
+                                                <input type="hidden" name="kelasId" value="<%= kelas._id %>">
+                                                <input type="hidden" name="adminId" value="<%= admin._id %>">
+                                                <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jkelas?')">Hapus Kelas</button>
+                                            </form>
                                         </ul>
                                     </div>
                                 </button>
@@ -304,9 +303,10 @@
                                             <a href="/siswa/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
                                             </li>
                                             <li>
-                                                <form action="/siswa?_method=DELETE" method="POST">
-                                                    <input type="hidden" name="_id" value="<%= kelas._id %>">
-                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jurusan?')">Hapus Jurusan</button>
+                                                <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
+                                                    <input type="hidden" name="kelasId" value="<%= kelas._id %>">
+                                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
+                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jkelas?')">Hapus Kelas</button>
                                                 </form>
                                             </li>
                                         </ul>

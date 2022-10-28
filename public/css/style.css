@@ -1281,6 +1281,11 @@ select {
   padding-bottom: 0.625rem;
 }
 
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
 .pt-12 {
   padding-top: 3rem;
 }

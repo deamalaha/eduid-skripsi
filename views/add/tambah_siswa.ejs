@@ -23,31 +23,31 @@
             <div class="">
                 <ul class="relative">
                     <li class="relative">
-                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/main" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/main/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
                             <img src="/assets/home.png" class="mr-3" alt="">
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="relative">
-                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark" href="/kurikulum">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark" href="/kurikulum/<%= admin._id %>">
                             <img src="/assets/3-layers.png" class="mr-3" alt="">
                             <span>Kurikulum</span>
                         </a>
                     </li>
                     <li class="relative">
-                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/siswa" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/siswa/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
                             <img src="/assets/check-square.png" class="mr-3" alt="">
                             <span>Nilai Siswa</span>
                         </a>
                     </li>
                     <li class="relative">
-                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/data_sharing" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/data_sharing/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
                         <img src="/assets/cloud.png" class="mr-3" alt="">
                         <span>Data Sharing</span>
                         </a>
                     </li>
                     <li class="relative">
-                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/student_report" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/student_report/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
                         <img src="/assets/flag.png" class="mr-3" alt="">
                         <span>Report</span>
                         </a>
@@ -85,7 +85,7 @@
             </div>
             <div class="pb-5"> 
                 <h1 class="text-text_lg font-medium">Tingkatan</h1>
-                <p class="text-text_md font-regular"><%= dataKelas.tingkatan %></p>
+                <p class="text-text_md font-regular"><%= dataKelas.jurusan.tingkatan %></p>
             </div>
             <div class="pb-5">
                 <h1 class="text-text_lg font-medium">Nama Kelas</h1>
@@ -93,24 +93,24 @@
             </div>
             <div class="pb-5">
                 <h1 class="text-text_lg font-medium">Jurusan</h1>
-                <p class="text-text_md font-regular"><%= dataKelas.jurusan %></p>
+                <p class="text-text_md font-regular"><%= dataKelas.jurusan.jurusan %></p>
             </div>
             <div class="pb-5">
                 <h1 class="text-text_lg font-medium">Standar Kurikulum</h1>
-                <p class="text-text_md font-regular"><%= dataKelas.standarKurikulum %></p>
+                <p class="text-text_md font-regular"><%= dataKelas.jurusan.standarKurikulum %></p>
             </div>
         </div>
         
         <div class="pr-14 pb-10 w-full">
             <div class="overflow-x-auto w-full shadow-md sm:rounded-lg">
-                <table class="w-full text-left text-gray-500 bg-primary-600">
+                <table class="w-full text-left text-gray-500">
                     <caption class="p-5 font-semibold text-text-base bg-white">
                         <div class="flex items-center">
                             <h1 class="text-left flex-1 text-display_xs">Daftar Siswa</h1>
                             <div>
                                 <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                                 border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                                <a href="/siswa/<%= admin._id %>/tambah_siswa/<%= dataKelas._id %> ">
+                                <a href="/siswa/<%= admin._id %>/tambah_siswa/<%= dataKelas._id %>">
                                     <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">
                                         <span class="mr-2"><img src="/assets/plus.png" alt="" class=" w-5 h-5"></span>
                                         Tambah Siswa</button>
@@ -138,6 +138,9 @@
                             <th scope="col" class="py-3 px-6">
                                 <span class="sr-only"></span>
                             </th>
+                            <th scope="col" class="py-3 px-6">
+                                <span class="sr-only"></span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -155,11 +158,21 @@
                                 <td class="py-7 px-8 ">
                                     Jan 4, 2022
                                 </td>
-                                <td class="py-7 px-8 ">
+                                <td class="py-7 px-8">
                                     <span class="bg-success-50 text-success-700 border border-success-500 text-text_sm font-medium mr-2 px-2.5 py-0.5 rounded">Lengkap</span>
                                 </td>
-                                <td class="py-7 px-8 text-right">
-                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
+                                <td class="py-7 px-2">
+                                    <a href="#">
+                                        <img src="/assets/plus-black.png" alt="" style="height:20px ; width: 20px;">
+                                    </a>
+                                </td>
+                                <td class="py-7 px-2">
+                                    <form action="/siswa/hapusSiswa?_method=DELETE" method="POST">
+                                        <input type="hidden" name="siswaId" value="<%= siswa._id %>">
+                                        <input type="hidden" name="adminId" value="<%= admin._id %>">
+                                        <input type="hidden" name="kelasId" value="<%= dataKelas._id %>">
+                                        <button type="submit" onclick="return confirm('Yakin ingin menghapus siswa?')"><img src="/assets/trash.png" alt="" style="height:20px; width: 20px;"></button>
+                                    </form>
                                 </td>
                             </tr>
                         <% }) %>
