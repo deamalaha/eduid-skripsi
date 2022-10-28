@@ -1,5 +1,6 @@
-<form action="/kurikulum?_method=PUT" method="post">
-    <input type="hidden" name="_id" value="<%= dataJurusan._id %>"/>
+<form action="/kurikulum/editJurusan?_method=PUT" method="post">
+    <input type="hidden" name="adminId" value="<%= admin._id %>">
+    <input type="hidden" name="jurusanId" value="<%= dataJurusan._id %>"/>
     <div class="pt-5 px-9 w-auto">
         <div class="border border-gray-300 rounded-lg px-9 py-7">
             <div class="mb-3 mr-5 pb-4">
@@ -23,8 +24,8 @@
                 ease-in-out
                 m-0
                 rounded-lg
-                focus:text-text-base focus:bg-white focus:outline-none" id="tingkatan" name="tingkatan" value="<%= dataJurusan.tingkatan %>">
-                    <option selected>Pilih tingkatan</option>
+                focus:text-text-base focus:bg-white focus:outline-none" id="tingkatan" name="tingkatan">
+                    <option selected><%= dataJurusan.tingkatan %></option>
                     <option value="10">10</option>
                     <option value="11">11</option>
                     <option value="12">12</option>
@@ -49,7 +50,7 @@
                 m-0
                 rounded-lg
                 focus:text-text-base focus:bg-white focus:outline-none" id="jurusan" name="jurusan">
-                    <option selected>Pilih Jurusan</option>
+                    <option selected><%= dataJurusan.jurusan %></option>
                     <option value="MIPA">MIPA</option>
                     <option value="IPS">IPS</option>
                 </select>
@@ -73,7 +74,7 @@
                 m-0
                 rounded-lg
                 focus:text-text-base focus:bg-white focus:outline-none" id="semester" name="semester">
-                    <option selected>Pilih Semester</option>
+                    <option selected><%= dataJurusan.semester %></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select>
@@ -97,7 +98,7 @@
                 m-0
                 rounded-lg
                 focus:text-text-base focus:bg-white focus:outline-none" id="standarKurikulum" name="standarKurikulum">
-                    <option selected>Pilih kurikulum</option>
+                    <option selected><%= dataJurusan.standarKurikulum %></option>
                     <option value="K13">K13</option>
                     <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
                 </select>
@@ -121,7 +122,7 @@
                 m-0
                 rounded-lg
                 focus:text-text-base focus:bg-white focus:outline-none" id="skalaPenilaian" name="skalaPenilaian">
-                    <option selected>Pilih skala Penilaian</option>
+                    <option selected><%= dataJurusan.skalaPenilaian %></option>
                     <option value="100">100</option>
                     <option value="Huruf">Huruf</option>
                 </select>

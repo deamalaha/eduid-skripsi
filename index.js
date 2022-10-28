@@ -177,7 +177,7 @@ app.put('/siswa', (req, res) => {
       dataKelas: req.body
     })
   } else {
-    DataKelas.updateOne(
+    DataKelas.findOneAndUpdate(
       { _id : req.body._id }, 
       {
         $set: {
@@ -240,6 +240,21 @@ app.delete('/siswa/hapusSiswa', (req, res) => {
   })
 })
 
+// tambah nilai siswa
+app.get('/siswa/:adminId/:kelasId/:siswaId', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params.adminId})
+  const dataKelas = await DataKelas.find()
+  const siswa = await Siswa.find()
+
+  res.render('add/tambah_nilai_siswa', {
+    title: 'Siswa Dashboard - Tambah Nilai',
+    layout: 'layout/main-layout',
+    admin,
+    dataKelas,
+    siswa
+  })
+})
+
 app.get('/student_report', (req, res) => {
   res.render('dashboard/student_report', {
     title: 'Student Report',
@@ -276,14 +291,17 @@ app.get('/kurikulum/:_id/tambah_jurusan', async (req, res) => {
   })
 })
 
-app.get('/kurikulum/edit/:_id', async (req, res) => {
-  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params._id});
+app.get('/kurikulum/:adminId/edit/:jurusanId', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params.adminId})
+  const dataJurusan = await KurikulumJurusan.findOne({ _id : req.params.jurusanId});
 
   res.render('modal/modal_edit_jurusan', {
     title: 'Kurikulum Dashboard - Edit Jurusan',
     layout: 'layout/modal-layout',
     dataJurusan,
+    admin
   })
+
 })
 
 
@@ -421,23 +439,16 @@ app.delete('/kurikulum/hapusJurusan', (req, res) => {
   })
 })
 
-app.put('/kurikulum', (req, res) => {
-  const { jenisStudi, tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian, _id } = req.body
-  
-  KurikulumJurusan.findByIdAndUpdate(
-    { _id: _id},
-    { $set: {
-      jenisStudi, tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian
-    }}
-  ).then((result) => {
-    res.redirect('/kurikulum')
-  })
-})
+app.put('/kurikulum/editJurusan', body(), async (req, res) => {
+  const { tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian, jurusanId, adminId } = req.body
 
-app.get('/tambah_nilai_siswa', (req, res) => {
-  res.render('add/tambah_nilai_siswa', {
-    title: 'Siswa Dashboard - Tambah Nilai',
-    layout: 'layout/main-layout',
+  await KurikulumJurusan.findByIdAndUpdate(
+    { _id: jurusanId},
+    { 
+      tingkatan, jurusan, semester, standarKurikulum, skalaPenilaian
+    }
+  ).then((result) => {
+    res.redirect('/kurikulum/' + adminId)
   })
 })
 
