@@ -166,17 +166,22 @@ app.delete('/siswa/hapusKelas', (req, res) => {
   })
 })
 
+app.get('/siswa/:adminId/edit/:kelasId', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params.adminId})
+  const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId});
+  const jurusan = await KurikulumJurusan.find()
+
+  res.render('modal/modal_edit_kelas', {
+    title: 'Siswa Dashboard - Edit Kelas',
+    layout: 'layout/modal-layout',
+    dataKelas,
+    admin,
+    jurusan
+  })
+})
+
 app.put('/siswa', (req, res) => {
 
-  const errors = validationResult(req)
-  if (!errors.isEmpty()) {
-    res.render('modal/modal_edit_kelas', {
-      title: 'Siswa Dashboard - Edit Kelas',
-      layout: 'layout/signup-layout',
-      errors: errors.array(),
-      dataKelas: req.body
-    })
-  } else {
     DataKelas.findOneAndUpdate(
       { _id : req.body._id }, 
       {
@@ -192,7 +197,7 @@ app.put('/siswa', (req, res) => {
       res.redirect('/siswa')
     })
   }
-})
+)
 
 app.get('/siswa/:adminId/tambah_siswa/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
@@ -301,7 +306,6 @@ app.get('/kurikulum/:adminId/edit/:jurusanId', async (req, res) => {
     dataJurusan,
     admin
   })
-
 })
 
 
