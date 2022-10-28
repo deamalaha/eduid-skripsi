@@ -115,16 +115,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% admin.kelas.filter((kelas) => kelas.tingkatan === '10').forEach(kelas => { %>
+                    <% admin.kelas.filter((kelas) => kelas?.jurusan?.tingkatan === '10').forEach(kelas => { %>
                         <tr class="bg-white border-b">
                             <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
                                 <%= kelas.nama %> 
                             </th>
                             <td class="py-7 px-8 ">
-                                <%= kelas.jurusan %> 
+                                <%= kelas.jurusan.jurusan %> 
                             </td>
                             <td class="py-7 px-8 ">
-                                <%= kelas.standarKurikulum %> 
+                                <%= kelas.jurusan.standarKurikulum %> 
                             </td>
                             <td class="py-7 px-8 ">
                                 Jan 4, 2022
@@ -198,16 +198,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% admin.kelas.filter((kelas) => kelas.tingkatan === '11').forEach(kelas => { %>
+                    <% admin.kelas.filter((kelas) => kelas?.jurusan?.tingkatan === '11').forEach(kelas => { %>
                         <tr class="bg-white border-b">
                             <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
                                 <%= kelas.nama %> 
                             </th>
                             <td class="py-7 px-8 ">
-                                <%= kelas.jurusan %> 
+                                <%= kelas.jurusan.jurusan %> 
                             </td>
                             <td class="py-7 px-8 ">
-                                <%= kelas.standarKurikulum %> 
+                                <%= kelas.jurusan.standarKurikulum %> 
                             </td>
                             <td class="py-7 px-8 ">
                                 Jan 4, 2022
@@ -279,16 +279,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% admin.kelas.filter((kelas) => kelas.tingkatan === '12').forEach(kelas => { %>
+                    <% admin.kelas.filter((kelas) => kelas?.jurusan?.tingkatan === '12').forEach(kelas => { %>
                         <tr class="bg-white border-b">
                             <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
                                 <%= kelas.nama %> 
                             </th>
                             <td class="py-7 px-8 ">
-                                <%= kelas.jurusan %> 
+                                <%= kelas.jurusan.jurusan %> 
                             </td>
                             <td class="py-7 px-8 ">
-                                <%= kelas.standarKurikulum %> 
+                                <%= kelas.jurusan.standarKurikulum %> 
                             </td>
                             <td class="py-7 px-8 ">
                                 Jan 4, 2022

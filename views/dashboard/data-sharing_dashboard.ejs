@@ -1,34 +1,107 @@
-<div class="pt-12 pl-9 flex">
-    <div>
-        <h1 class="text-display_sm font-medium">Data Sharing</h1>
-        <p class="text-text_md font-regular text-gray-500">Berbagi data siswa dengan aman menggunakan blockchain</p>
-    </div>
-    <!-- <div class="float-right">
-        <div class="float-right">
-            <div class="mb-3 xl:w-96">
-                <select class="form-select appearance-none
-                h-11 
-                w-96
-                block
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-text-base
-                bg-white bg-clip-padding bg-no-repeat
-                border border-solid border-gray-300
-                focus:ring-primary-600
-                transition
-                ease-in-out
-                m-0
-                rounded-lg
-                focus:text-white focus:bg-white focus:outline-none" aria-label="Default select example">
-                    <option selected>Pilih jenis studi</option>
-                    <option value="1">Reguler</option>
-                    <option value="2">Akselerasi</option>
-                    <option value="3">Lainnya</option>
-                </select>
+<aside>
+    <div class="w-64 h-full shadow-md bg-primary-900 absolute text-white" id="sidenavSecExample">
+        <div class="pt-8 pb-6 px-6">
+              <div class="flex items-center">
+                <div class="shrink-0">
+                  <img src="/assets/Logomark.png" class="rounded-full w-10" alt="Logomark">
+                </div>
+                <div class="grow ml-3">
+                  <p class="text-text_lg font-semibold text-white">Untitled UI
+                  </p>
+                </div>
+              </div>
+          </div>
+        
+        <ul class="relative px-4">
+            <div class="flex justify-center">
+                <div class="mb-3 xl:w-52">
+                  <div class="input-group relative flex flex-wrap items-stretch w-full mb-4 rounded-lg">
+                    <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-text-base bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-white focus:bg-white focus:border-primary-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                  </div>
+                </div>
             </div>
-        </div> 
-    </div> -->
-</div>
+            <div class="">
+                <ul class="relative">
+                    <li class="relative">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/main/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                            <img src="/assets/home.png" class="mr-3" alt="">
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="relative">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark" href="/kurikulum/<%= admin._id %>">
+                            <img src="/assets/3-layers.png" class="mr-3" alt="">
+                            <span>Kurikulum</span>
+                        </a>
+                    </li>
+                    <li class="relative">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/siswa/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                            <img src="/assets/check-square.png" class="mr-3" alt="">
+                            <span>Nilai Siswa</span>
+                        </a>
+                    </li>
+                    <li class="relative">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/data_sharing/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                        <img src="/assets/cloud.png" class="mr-3" alt="">
+                        <span>Data Sharing</span>
+                        </a>
+                    </li>
+                    <li class="relative">
+                        <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="/student_report/<%= admin._id %>" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                        <img src="/assets/flag.png" class="mr-3" alt="">
+                        <span>Report</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ul>
+        <div class="text-center bottom-0 absolute w-full">
+            <div class="px-4">
+                <a class="flex items-center text-sm py-4 px-6 h-16  text-white text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-primary-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                <img src="/assets/settings.png" class="mr-3" alt="">
+                <span>Settings</span>
+                </a>
+            </div>
+            <div>
+                <div class="flex items-center px-6 before:flex-1 before:border-t before:border-gray-500 before:mt-0.5 after:flex-1 after:border-t after:border-gray-500 after:mt-0.5"></div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<main class="flex-1 ml-64 overflow-y-scroll max-h-screen">
+    <div class="pt-12 pl-9 flex">
+        <div>
+            <h1 class="text-display_sm font-medium">Data Sharing</h1>
+            <p class="text-text_md font-regular text-gray-500">Berbagi data siswa dengan aman menggunakan blockchain</p>
+        </div>
+        <!-- <div class="float-right">
+            <div class="float-right">
+                <div class="mb-3 xl:w-96">
+                    <select class="form-select appearance-none
+                    h-11 
+                    w-96
+                    block
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-text-base
+                    bg-white bg-clip-padding bg-no-repeat
+                    border border-solid border-gray-300
+                    focus:ring-primary-600
+                    transition
+                    ease-in-out
+                    m-0
+                    rounded-lg
+                    focus:text-white focus:bg-white focus:outline-none" aria-label="Default select example">
+                        <option selected>Pilih jenis studi</option>
+                        <option value="1">Reguler</option>
+                        <option value="2">Akselerasi</option>
+                        <option value="3">Lainnya</option>
+                    </select>
+                </div>
+            </div> 
+        </div> -->
+    </div>
+</main>
