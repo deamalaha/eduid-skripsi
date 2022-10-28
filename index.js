@@ -415,7 +415,7 @@ app.post('/kurikulum', body(), async (req, res) => {
   return res.redirect('/kurikulum/' + adminId)
 })
 
-app.delete('/kurikulum', (req, res) => {
+app.delete('/kurikulum/hapusJurusan', (req, res) => {
   KurikulumJurusan.deleteOne({ _id : req.body.jurusanId}).then((result) => {
     res.redirect('/kurikulum/' + req.body.adminId)
   })
