@@ -70,10 +70,15 @@
 </aside>
 
 <main class="flex-1 ml-64 overflow-y-scroll max-h-screen">
-    <div class="pt-12 pl-9 flex">
-        <div>
+    <div class="pt-12 pl-9 pr-14 flex items-center">
+        <div class="flex-1">
             <h1 class="text-display_sm font-medium">Siswa</h1>
             <p class="text-text_md font-regular text-gray-500">Atur kelas dan siswa setiap tingkatan</p>
+        </div>
+        <div>
+            <a href="/siswa/<%= admin._id %>/tambah_kelas">
+                <button type="button" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-6 py-3">Tambah Kelas</button>
+            </a>
         </div>
     </div>
     
@@ -86,9 +91,6 @@
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                             border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                            <a href="/siswa/<%= admin._id %>/tambah_kelas">
-                                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Kelas</button>
-                            </a>
                         </div>
                     </div>
                 </caption>
@@ -169,9 +171,6 @@
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                             border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                            <a href="/siswa/<%= admin._id %>/tambah_kelas">
-                                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Kelas</button>
-                            </a>
                         </div>
                     </div>
                 </caption>
@@ -250,9 +249,6 @@
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_sm font-semibold rounded-lg
                             border border-gray-300 px-4 py-3 mr-3">Upload CSV</button>
-                            <a href="/siswa/<%= admin._id %>/tambah_kelas">
-                                <button type="button" class="bg-primary-600 text-white text-text_sm rounded-lg text-center inline-flex items-center px-4 py-3">Tambah Kelas</button>
-                            </a>
                         </div>
                     </div>
                 </caption>
