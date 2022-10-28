@@ -120,39 +120,51 @@ app.get('/main/:_id', async (req, res) => {
 
 
 app.get('/siswa/:_id', async (req, res) => {
-  const admin = await Admins.findById({ _id: req.params._id}).populate('kelas')
+
+  //var populateQuery = [{path:'books', select:'title pages'}, {path:'movie', select:'director'}];
+  const admin = await Admins.findById({ _id: req.params._id}).populate({path:'kelas', populate:{path:'jurusan'}})
 
   res.render('dashboard/siswa_dashboard', {
     title: 'Siswa Dashboard',
     layout: 'layout/main-layout',
     admin
   })
+
+  const filter = admin.kelas.filter((kelas) => kelas?.jurusan?.tingkatan === '12')
+
+  console.log(filter, 'test')
 })
 
 app.get('/siswa/:_id/tambah_kelas', async (req, res) => {
+  const jurusan = await KurikulumJurusan.find()
   const admin = await Admins.findById({ _id: req.params._id })
   console.log(admin)
   
   res.render('modal/modal_tambah_kelas', {
     title: 'Siswa Dashboard - Tambah Kelas',
     layout: 'layout/modal-layout',
-    admin
+    admin,
+    jurusan
   })
-  
 })
 
-app.post('/siswa', body(), async (req, res) => {
 
-  //tambah kelas
+//tambah kelas
+app.post('/siswa', body(), async (req, res) => {
+  const { nama, kurikulumJurusan} = req.body
+  
   const admin = await Admins.findById({ _id: req.body.adminId })
-  const { tingkatan, jurusan, nama, standarKurikulum} = req.body
+  const jurusan = await KurikulumJurusan.findOne({ _id: kurikulumJurusan})
+
+  console.log(nama, kurikulumJurusan)
   
   const newKelas = await DataKelas.create({
     nama,
-    tingkatan,
-    jurusan,
-    standarKurikulum
+    jurusan: kurikulumJurusan
   })
+
+  jurusan.kelas.push(newKelas)
+  jurusan.save()
 
   admin.kelas.push(newKelas)
   admin.save()
@@ -227,7 +239,7 @@ app.post('/siswa/tambah_siswa', body(), async (req, res) => {
 
 app.get('/siswa/:adminId/:kelasId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
-  const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId}).populate('siswa')
+  const dataKelas = await DataKelas.findOne({ _id : req.params.kelasId}).populate('siswa jurusan')
 
   console.log(dataKelas)
   
@@ -237,7 +249,6 @@ app.get('/siswa/:adminId/:kelasId', async (req, res) => {
     dataKelas,
     admin
   })
-
 })
 
 app.get('/student_report', (req, res) => {
@@ -254,21 +265,25 @@ app.get('/data_sharing', (req, res) => {
   })
 })
 
-app.get('/kurikulum', async (req, res) => {
-
+app.get('/kurikulum/:_id', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params._id})
   const dataKurikulum = await KurikulumJurusan.find()
   
   res.render('dashboard/kurikulum_dashboard', {
     title: 'Kurikulum Dashboard',
     layout: 'layout/main-layout',
     dataKurikulum,
+    admin
   })
 })
 
-app.get('/kurikulum/tambah_jurusan', (req, res) => {
+app.get('/kurikulum/:_id/tambah_jurusan', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params._id})
+
   res.render('modal/modal_tambah_jurusan', {
     title: 'Kurikulum Dashboard - Tambah Jurusan',
     layout: 'layout/modal-layout',
+    admin
   })
 })
 
@@ -283,11 +298,54 @@ app.get('/kurikulum/edit/:_id', async (req, res) => {
 })
 
 
-app.post('/kurikulum', body(), (req, res) => {
-  KurikulumJurusan.insertMany(req.body, (error, result) => {
-    req.flash('msg', 'Jurusan berhasil ditambahkan!')
-    res.redirect('/kurikulum')
-  })
+app.post('/kurikulum', body(), async (req, res) => {
+  // KurikulumJurusan.insertMany(req.body, (error, result) => {
+  //   req.flash('msg', 'Jurusan berhasil ditambahkan!')
+  //   res.redirect('/kurikulum')
+  // })
+  const { tingkatan, semester, standarKurikulum, skalaPenilaian } = req.body
+
+  if(req.body.jurusan === 'MIPA') {
+    const MIPAmatpel = [{
+      namaMataPelajaran: 'Biologi',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Matematika',
+      kkm: '70',
+      durasiJam: '32'
+    }]
+
+    await KurikulumJurusan.create({
+      tingkatan,
+      semester,
+      standarKurikulum,
+      skalaPenilaian,
+      mataPelajaran: MIPAmatpel
+    })
+  } else {
+    const IPSmatpel = [{
+      namaMataPelajaran: 'Geografi',
+      kkm: '70',
+      durasiJam: '32'
+    }, {
+      namaMataPelajaran: 'Sejarah',
+      kkm: '70',
+      durasiJam: '32'
+    }]
+
+    await KurikulumJurusan.create({
+      tingkatan,
+      semester,
+      standarKurikulum,
+      skalaPenilaian,
+      mataPelajaran: IPSmatpel
+    })
+  }
+
+  console.log('success')
+
+  //return res.redirect('/kurikulum/' +)
 })
 
 app.delete('/kurikulum', (req, res) => {
