@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const NilaiSiswa = mongoose.model('nilaiSiswa', {
+const nilaiSchema = mongoose.Schema({
     mataPelajaran: {
         type: Schema.Types.ObjectID, ref: 'mataPelajaran'
     },
@@ -10,7 +10,10 @@ const NilaiSiswa = mongoose.model('nilaiSiswa', {
     kelas: {
         type: Schema.Types.ObjectID, ref: 'kelas'
     },
-    nilai: String,
+    nilai: String}, {
+        timestamps: true
 })
+
+const NilaiSiswa = mongoose.model('nilaiSiswa', nilaiSchema)
 
 module.exports = { NilaiSiswa }

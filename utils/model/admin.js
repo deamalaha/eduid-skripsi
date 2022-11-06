@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Admins = mongoose.model('Admin', {
+const adminSchema = mongoose.Schema({
     name: String,
     date: Date,
     nip: String,
@@ -13,7 +13,12 @@ const Admins = mongoose.model('Admin', {
     }],
     kelas: [{
       type: mongoose.Schema.Types.ObjectId, ref: 'kelas',
-    }]
-})
+    }],
+  }, {
+    timestamps: true,
+  }
+)
+
+const Admins = mongoose.model('Admin', adminSchema)
 
 module.exports = { Admins }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const KurikulumJurusan = mongoose.model('jurusan', {
+const jurusanSchema = mongoose.Schema({
     tingkatan: String,
     jurusan: String,
     semester: String,
@@ -12,6 +12,10 @@ const KurikulumJurusan = mongoose.model('jurusan', {
         durasiJam: String,
     }],
     kelas: [{type: mongoose.Schema.Types.ObjectId, ref: 'kelas'}]
+    },{
+        timestamps: true
 })
+
+const KurikulumJurusan = mongoose.model('jurusan', jurusanSchema)
 
 module.exports = { KurikulumJurusan }
