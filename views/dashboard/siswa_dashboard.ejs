@@ -114,6 +114,12 @@
                         <th scope="col" class="py-3 px-6">
                             <span class="sr-only"></span>
                         </th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only"></span>
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only"></span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,27 +140,21 @@
                             <td class="py-7 px-8 ">
                                 Jan 4, 2022
                             </td>
-                            <td class="py-7 px-8 text-right">
-                                <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" class="group">
-                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                                    <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
-                                        <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                            <li>
-                                            <a href="/siswa/<%= admin._id %>/edit/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Kelas</a>
-                                            </li>
-                                            <li>
-                                            <a href="/siswa/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
-                                            </li>
-                                            <li>
-                                                <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
-                                                    <input type="hidden" name="kelasId" value="<%= kelas._id %>">
-                                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
-                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jkelas?')">Hapus Kelas</button>
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </button>
+                            <td class="py-7 scroll-px-1">
+                                <a href="/siswa/<%= admin._id %>/<%= kelas._id %>">
+                                    <img src="/assets/plus-black.png" alt="" style="height:20px ; width: 20px;">
+                                </a>
+                            </td><td class="py-7 px-1">
+                                <a href="/siswa/<%= admin._id %>/edit/<%= kelas._id %>">
+                                    <img src="/assets/edit-2.png" alt="" style="height:20px ; width: 20px;">
+                                </a>
+                            </td>
+                            <td class="py-7 pl-2 pr-4">
+                                <form action="/siswa/hapusSiswa?_method=DELETE" method="POST">
+                                    <input type="hidden" name="kelasId" value="<%= kelas._id %>">
+                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
+                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus siswa?')"><img src="/assets/trash.png" alt="" style="height:20px; width: 20px;"></button>
+                                </form>
                             </td>
                         </tr>
                     <% }) %>
@@ -195,6 +195,12 @@
                         <th scope="col" class="py-3 px-6">
                             <span class="sr-only"></span>
                         </th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only"></span>
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only"></span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -215,21 +221,21 @@
                             <td class="py-7 px-8 ">
                                 Jan 4, 2022
                             </td>
-                            <td class="py-7 px-8 text-right">
-                                <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" class="group">
-                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                                    <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
-                                        <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                            <a href="/siswa/<%= admin._id %>/edit/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Kelas</a>
-                                            <a href="/siswa/<%= admin._id %>/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
-                                            <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
-                                                <input type="hidden" name="kelasId" value="<%= kelas._id %>">
-                                                <input type="hidden" name="adminId" value="<%= admin._id %>">
-                                                <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jkelas?')">Hapus Kelas</button>
-                                            </form>
-                                        </ul>
-                                    </div>
-                                </button>
+                            <td class="py-7 scroll-px-1">
+                                <a href="/siswa/<%= admin._id %>/<%= kelas._id %>">
+                                    <img src="/assets/plus-black.png" alt="" style="height:20px ; width: 20px;">
+                                </a>
+                            </td><td class="py-7 px-1">
+                                <a href="/siswa/<%= admin._id %>/edit/<%= kelas._id %>">
+                                    <img src="/assets/edit-2.png" alt="" style="height:20px ; width: 20px;">
+                                </a>
+                            </td>
+                            <td class="py-7 pl-2 pr-4">
+                                <form action="/siswa/hapusSiswa?_method=DELETE" method="POST">
+                                    <input type="hidden" name="kelasId" value="<%= kelas._id %>">
+                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
+                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus siswa?')"><img src="/assets/trash.png" alt="" style="height:20px; width: 20px;"></button>
+                                </form>
                             </td>
                         </tr>
                     <% }) %>
@@ -270,6 +276,12 @@
                         <th scope="col" class="py-3 px-6">
                             <span class="sr-only"></span>
                         </th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only"></span>
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only"></span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -290,27 +302,21 @@
                             <td class="py-7 px-8 ">
                                 Jan 4, 2022
                             </td>
-                            <td class="py-7 px-8 text-right">
-                                <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDotsMenu" type="button" class="group">
-                                    <img src="/assets/more-vertical.png" alt="" style="height:20px ; width: 20px;">
-                                    <div id="dropdownDotsMenu" class="absolute hidden group-focus:block z-10 w-44 bg-white rounded divide-y shadow right-0">
-                                        <ul class="py-1 text-sm text-text-base dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                            <li>
-                                                <a href="/siswa/<%= admin._id %>/edit/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base">Edit Informasi Kelas</a>
-                                            </li>
-                                            <li>
-                                            <a href="/siswa/<%= kelas._id %>" class="block py-2 px-4 hover:bg-gray-100 text-text-base" >Tambah Siswa</a>
-                                            </li>
-                                            <li>
-                                                <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
-                                                    <input type="hidden" name="kelasId" value="<%= kelas._id %>">
-                                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
-                                                    <button type="submit" class="block py-2 px-4 hover:bg-gray-100 text-text-base" onclick="return confirm('Yakin ingin menghapus jkelas?')">Hapus Kelas</button>
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </button>
+                            <td class="py-7 scroll-px-1">
+                                <a href="/siswa/<%= admin._id %>/<%= kelas._id %>">
+                                    <img src="/assets/plus-black.png" alt="" style="height:20px ; width: 20px;">
+                                </a>
+                            </td><td class="py-7 px-1">
+                                <a href="/siswa/<%= admin._id %>/edit/<%= kelas._id %>">
+                                    <img src="/assets/edit-2.png" alt="" style="height:20px ; width: 20px;">
+                                </a>
+                            </td>
+                            <td class="py-7 pl-2 pr-4">
+                                <form action="/siswa/hapusSiswa?_method=DELETE" method="POST">
+                                    <input type="hidden" name="kelasId" value="<%= kelas._id %>">
+                                    <input type="hidden" name="adminId" value="<%= admin._id %>">
+                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus siswa?')"><img src="/assets/trash.png" alt="" style="height:20px; width: 20px;"></button>
+                                </form>
                             </td>
                         </tr>
                     <% }) %>
