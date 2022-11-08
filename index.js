@@ -6,6 +6,7 @@ var methodOverride = require('method-override')
 var expressLayouts = require('express-ejs-layouts')
 const { body, validationResult, check } = require('express-validator')
 require('./utils/db.js')
+var moment = require('moment')
 
 const { Admins } = require('./utils/model/admin')
 const { KurikulumJurusan } = require('./utils/model/kurikulumJurusan')
@@ -123,7 +124,8 @@ app.get('/siswa/:_id', async (req, res) => {
   res.render('dashboard/siswa_dashboard', {
     title: 'Siswa Dashboard',
     layout: 'layout/main-layout',
-    admin
+    admin,
+    moment
   })
 
 })
@@ -155,7 +157,7 @@ app.post('/siswa', body(), async (req, res) => {
   })
 
   jurusan.kelas.push(newKelas)
-  jurusan.save()
+  jurusan.save() 
 
   admin.kelas.push(newKelas)
   admin.save()
@@ -270,7 +272,8 @@ app.get('/siswa/:adminId/:kelasId', async (req, res) => {
     title: 'Siswa Dashboard - Tambah Siswa',
     layout: 'layout/main-layout',
     dataKelas,
-    admin
+    admin,
+    moment
   })
 })
 
@@ -297,18 +300,24 @@ app.get('/siswa/:adminId/:kelasId/:siswaId', async (req, res) => {
 })
 
 // Student Report Dashboard
-app.get('/student_report', (req, res) => {
+app.get('/student_report/:_id', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params._id})
+
   res.render('dashboard/student_report', {
     title: 'Student Report',
     layout: 'layout/main-layout',
+    admin
   })
 })
 
 // Data Sharing Dashboard
-app.get('/data_sharing', (req, res) => {
+app.get('/data_sharing/:_id', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params._id})
+
   res.render('dashboard/data-sharing_dashboard', {
     title: 'Data Sharing',
     layout: 'layout/main-layout',
+    admin
   })
 })
 
@@ -500,5 +509,5 @@ app.put('/kurikulum/editJurusan', body(), async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`EduID listening on port localhost:${port}`)
+  console.log(`EduID listening on port https://localhost:${port}`)
 })

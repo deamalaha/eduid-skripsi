@@ -135,10 +135,10 @@
                                 <%= kelas.jurusan.standarKurikulum %> 
                             </td>
                             <td class="py-7 px-8 ">
-                                Jan 4, 2022
+                                <%= moment(kelas.jurusan.createdAt).format("lll") %>
                             </td>
                             <td class="py-7 px-8 ">
-                                Jan 4, 2022
+                                <%= moment(kelas.jurusan.updatedAt).format("lll") %>
                             </td>
                             <td class="py-7 scroll-px-1">
                                 <a href="/siswa/<%= admin._id %>/<%= kelas._id %>">
@@ -150,7 +150,7 @@
                                 </a>
                             </td>
                             <td class="py-7 pl-2 pr-4">
-                                <form action="/siswa/hapusSiswa?_method=DELETE" method="POST">
+                                <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
                                     <input type="hidden" name="kelasId" value="<%= kelas._id %>">
                                     <input type="hidden" name="adminId" value="<%= admin._id %>">
                                     <button type="submit" onclick="return confirm('Yakin ingin menghapus siswa?')"><img src="/assets/trash.png" alt="" style="height:20px; width: 20px;"></button>
@@ -216,10 +216,10 @@
                                 <%= kelas.jurusan.standarKurikulum %> 
                             </td>
                             <td class="py-7 px-8 ">
-                                Jan 4, 2022
+                                <%= moment(kelas.jurusan.createdAt).format("lll") %>
                             </td>
                             <td class="py-7 px-8 ">
-                                Jan 4, 2022
+                                <%= moment(kelas.jurusan.updatedAt).format("lll") %>
                             </td>
                             <td class="py-7 scroll-px-1">
                                 <a href="/siswa/<%= admin._id %>/<%= kelas._id %>">
@@ -231,7 +231,7 @@
                                 </a>
                             </td>
                             <td class="py-7 pl-2 pr-4">
-                                <form action="/siswa/hapusSiswa?_method=DELETE" method="POST">
+                                <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
                                     <input type="hidden" name="kelasId" value="<%= kelas._id %>">
                                     <input type="hidden" name="adminId" value="<%= admin._id %>">
                                     <button type="submit" onclick="return confirm('Yakin ingin menghapus siswa?')"><img src="/assets/trash.png" alt="" style="height:20px; width: 20px;"></button>
@@ -297,10 +297,10 @@
                                 <%= kelas.jurusan.standarKurikulum %> 
                             </td>
                             <td class="py-7 px-8 ">
-                                Jan 4, 2022
+                                <%= moment(kelas.jurusan.createdAt).format("lll") %>
                             </td>
                             <td class="py-7 px-8 ">
-                                Jan 4, 2022
+                                <%= moment(kelas.jurusan.updatedAt).format("lll") %>
                             </td>
                             <td class="py-7 scroll-px-1">
                                 <a href="/siswa/<%= admin._id %>/<%= kelas._id %>">
@@ -312,7 +312,7 @@
                                 </a>
                             </td>
                             <td class="py-7 pl-2 pr-4">
-                                <form action="/siswa/hapusSiswa?_method=DELETE" method="POST">
+                                <form action="/siswa/hapusKelas?_method=DELETE" method="POST">
                                     <input type="hidden" name="kelasId" value="<%= kelas._id %>">
                                     <input type="hidden" name="adminId" value="<%= admin._id %>">
                                     <button type="submit" onclick="return confirm('Yakin ingin menghapus siswa?')"><img src="/assets/trash.png" alt="" style="height:20px; width: 20px;"></button>

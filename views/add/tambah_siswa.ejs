@@ -156,10 +156,10 @@
                                     <%= siswa.nisn %>
                                 </td>
                                 <td class="py-7 px-8 ">
-                                    Jan 4, 2022
+                                    <%= moment(siswa.createdAt).format("lll") %>
                                 </td>
                                 <td class="py-7 px-8 ">
-                                    Jan 4, 2022
+                                    <%= moment(siswa.updatedAt).format("lll") %>
                                 </td>
                                 <td class="py-7 px-8">
                                     <span class="bg-success-50 text-success-700 border border-success-500 text-text_sm font-medium mr-2 px-2.5 py-0.5 rounded">Lengkap</span>
