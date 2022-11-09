@@ -12,6 +12,7 @@ const { Admins } = require('./utils/model/admin')
 const { KurikulumJurusan } = require('./utils/model/kurikulumJurusan')
 const { DataKelas } = require('./utils/model/dataKelas')
 const { Siswa } = require('./utils/model/siswa')
+const { data } = require('autoprefixer')
 
 const port = 4000
 
@@ -218,7 +219,6 @@ app.get('/siswa/:adminId/edit/:kelasId', async (req, res) => {
 
 // Edit Kelas Function
 app.put('/siswa/editKelas', async (req, res) => {
-
   const { nama, kurikulumJurusan, adminId, kelasId } = req.body
 
     await DataKelas.findOneAndUpdate(
@@ -275,6 +275,7 @@ app.get('/siswa/:adminId/:kelasId', async (req, res) => {
     admin,
     moment
   })
+  
 })
 
 // Hapus Siswa Function
@@ -287,16 +288,20 @@ app.delete('/siswa/hapusSiswa', (req, res) => {
 // Tambah Nilai Siswa Dashboard
 app.get('/siswa/:adminId/:kelasId/:siswaId', async (req, res) => {
   const admin = await Admins.findOne({_id: req.params.adminId})
-  const dataKelas = await DataKelas.find()
-  const siswa = await Siswa.find()
+  const dataKelas = await DataKelas.findOne({_id: req.params.kelasId})
+  const siswa = await Siswa.findOne({_id: req.params.siswaId})
+  const mataPelajaran = await DataKelas.findById({_id: req.params.kelasId}).populate({path:'jurusan', populate:{path:'mataPelajaran'}})
 
   res.render('add/tambah_nilai_siswa', {
     title: 'Siswa Dashboard - Tambah Nilai',
     layout: 'layout/main-layout',
     admin,
     dataKelas,
-    siswa
+    siswa,
+    mataPelajaran
   })
+
+  console.log(mataPelajaran)
 })
 
 // Student Report Dashboard

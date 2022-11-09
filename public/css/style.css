@@ -1246,11 +1246,6 @@ select {
   padding-right: 2.25rem;
 }
 
-.px-11 {
-  padding-left: 2.75rem;
-  padding-right: 2.75rem;
-}
-
 .px-2\.5 {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -1373,10 +1368,6 @@ select {
 
 .pt-16 {
   padding-top: 4rem;
-}
-
-.pl-1 {
-  padding-left: 0.25rem;
 }
 
 .text-left {

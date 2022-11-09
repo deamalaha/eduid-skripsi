@@ -73,7 +73,7 @@
     <div class="pt-12 pl-9 flex">
         <div>
             <h1 class="text-display_sm font-medium">Tambah Nilai Siswa</h1>
-            <p class="text-text_md font-regular text-gray-500">Tambah nilai siswa per kelas untuk setiap mata pelajaran atau siswa untuk seluruh mata pelajaran</p>
+            <p class="text-text_md font-regular text-gray-500">Tambah nilai siswa untuk seluruh mata pelajaran</p>
         </div>
     </div>
     
@@ -98,10 +98,7 @@
                 m-0
                 rounded-lg
                 focus:text-text-base focus:bg-white focus:outline-none" aria-label="Default select example">
-                    <option selected>Pilih kelas</option>
-                    <% dataKelas.forEach(item => { %>
-                        <option value="<%= item._id %>"><%= item.nama %></option>
-                    <% }) %>
+                    <option selected><%= dataKelas.nama %></option>
                 </select>
             </div>
             <div class="mb-3 mr-5">
@@ -147,37 +144,31 @@
                 m-0
                 rounded-lg
                 focus:text-text-base focus:bg-white focus:outline-none">
-                    <option selected>Pilih Siswa</option>
-                    <% siswa.forEach(item => { %>
-                        <option value="<%= item._id %>"><%= item.namaSiswa %></option>
-                    <% }) %>
+                    <option selected><%= siswa.namaSiswa %></option>
                 </select>
             </div>
         </div>
     </div>
-    
-    <div class="pt-5 px-9 flex justify-end">
-        <button type="button" class="bg-primary-600 text-white text-text_md rounded-lg text-center inline-flex items-center px-11 py-3">Filter</button>
-    </div>
-    
+
     <div class="pt-5 px-9 flex">
         <div class="overflow-x-auto w-full shadow-md sm:rounded-lg">
             <table class="w-full text-left text-gray-500 bg-primary-600">
                 <caption class="p-5 font-semibold text-text-base bg-white">
                     <div class="flex items-center">
-                        <h1 class="text-left flex-1 text-display_xs">Daftar Nilai Siswa</h1>
+                        <h1 class="text-left flex-1 text-display_xs">Daftar Mata Pelajaran</h1>
                         <div>
                             <button type="button" class="bg-white text-text-base text-text_md font-semibold rounded-lg
                             border inline-flex items-center border-gray-300 px-4 py-3 mr-3"><span class="mr-2"><img src="/assets/upload.png" alt=""></span>Upload CSV</button>
+                        </div>
                     </div>
                 </caption>
                 <thead class="text-text_sm font-medium text-gray-500 bg-gray-50">
                     <tr>
                         <th scope="col" class="py-3 px-6">
-                            Nama Siswa
+                            Mata Pelajaran
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            NISN
+                            KKM
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Nilai Siswa
@@ -194,82 +185,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Dea Ivanka Malaha
-                        </th>
-                        <td class="py-7 px-8 ">
-                            D121181008
-                        </td>
-                        <td class="py-7 px-8 ">
-                            85
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/edit-2.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Dea Ivanka Malaha
-                        </th>
-                        <td class="py-7 px-8 ">
-                            D121181008
-                        </td>
-                        <td class="py-7 px-8 ">
-                            85
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/edit-2.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Dea Ivanka Malaha
-                        </th>
-                        <td class="py-7 px-8 ">
-                            D121181008
-                        </td>
-                        <td class="py-7 px-8 ">
-                            85
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/edit-2.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b">
-                        <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
-                            Dea Ivanka Malaha
-                        </th>
-                        <td class="py-7 px-8 ">
-                            D121181008
-                        </td>
-                        <td class="py-7 px-8 ">
-                            85
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 ">
-                            Jan 4, 2022
-                        </td>
-                        <td class="py-7 px-8 text-right">
-                            <img src="/assets/edit-2.png" alt="" style="height:20px ; width: 20px;">
-                        </td>
-                    </tr>
                     <tr class="bg-white border-b">
                         <th scope="row" class="py-7 px-8 font-medium text-text-base whitespace-nowrap">
                             Dea Ivanka Malaha
