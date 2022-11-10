@@ -12,7 +12,7 @@ const { Admins } = require('./utils/model/admin')
 const { KurikulumJurusan } = require('./utils/model/kurikulumJurusan')
 const { DataKelas } = require('./utils/model/dataKelas')
 const { Siswa } = require('./utils/model/siswa')
-const { data } = require('autoprefixer')
+const { NilaiSiswa } = require('./utils/model/nilaiSiswa')
 
 const port = 4000
 
@@ -292,16 +292,60 @@ app.get('/siswa/:adminId/:kelasId/:siswaId', async (req, res) => {
   const siswa = await Siswa.findOne({_id: req.params.siswaId})
   const mataPelajaran = await DataKelas.findById({_id: req.params.kelasId}).populate({path:'jurusan', populate:{path:'mataPelajaran'}})
 
-  res.render('add/tambah_nilai_siswa', {
+  const nilaiSiswa = await NilaiSiswa.find()
+  
+  const listNilai = await Siswa.findById({_id: req.params.siswaId}).populate({path: 'nilai'})
+  
+  res.render('add/tambah_nilaiSiswa', {
     title: 'Siswa Dashboard - Tambah Nilai',
     layout: 'layout/main-layout',
     admin,
     dataKelas,
     siswa,
-    mataPelajaran
+    mataPelajaran,
+    nilaiSiswa,
+    listNilai,
+    moment
   })
 
-  console.log(mataPelajaran)
+})
+
+//Tambah Nilai Modal
+app.get('/siswa/:adminId/:kelasId/:siswaId/:matpelId/tambahNilai', async (req, res) => {
+  const admin = await Admins.findOne({_id: req.params.adminId})
+  const dataKelas = await DataKelas.findOne({_id: req.params.kelasId})
+  const siswa = await Siswa.findOne({_id: req.params.siswaId})
+  const mataPelajaran = await DataKelas.findById({_id: req.params.kelasId}).populate({path: 'jurusan', populate:{path:'mataPelajaran'}})
+  const selectedMatPel = await mataPelajaran.jurusan.mataPelajaran.find(item => item._id.toString() === req.params.matpelId)
+
+  res.render('modal/modal_tambah_nilai_siswa', {
+    title: 'Siswa Dashboard - Tambah Nilai',
+    layout: 'layout/main-layout',
+    admin,
+    dataKelas,
+    siswa,
+    mataPelajaran,
+    selectedMatPel
+  })
+
+})
+
+app.post('/siswa/tambahNilai', async (req, res) => {
+  const siswa = await Siswa.findOne({_id: req.body.siswaId})
+  const dataKelas = await DataKelas.findOne({_id: req.body.kelasId})
+
+  const newNilai = await NilaiSiswa.create({
+    siswa,
+    nilai: req.body.nilai,
+    mataPelajaran: req.body.matpelId,
+    kelas: dataKelas
+  })
+
+  siswa.nilai.push(newNilai)
+  siswa.save()
+
+  return res.redirect('/siswa/' + req.body.adminId + '/' + req.body.kelasId + '/' + req.body.siswaId)
+
 })
 
 // Student Report Dashboard
